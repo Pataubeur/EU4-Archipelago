@@ -2,7 +2,7 @@ import itertools
 import unittest
 
 from tests.helpers import manifest
-from runtime.data import COUNTRIES, ITEMS, OBJECTIVES, select_objectives
+from runtime.data import COUNTRY_PRESETS, ITEMS, OBJECTIVES, select_objectives
 
 
 class CatalogTests(unittest.TestCase):
@@ -15,7 +15,8 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual(len({o.name for o in OBJECTIVES}), len(locations))
 
     def test_entire_option_matrix(self):
-        for count, econ, tech, country in itertools.product(range(10, 21), (False, True), (False, True), COUNTRIES):
+        for count, econ, tech, country in itertools.product(
+                range(10, 21), (False, True), (False, True), (*COUNTRY_PRESETS, "BYZ", "MNG", "AZT", "K00")):
             with self.subTest(count=count, econ=econ, tech=tech, country=country):
                 pool = select_objectives(count, econ, tech)
                 self.assertEqual(len(pool), count)
@@ -30,6 +31,6 @@ class CatalogTests(unittest.TestCase):
             self.assertNotEqual(manifest(**kwargs).token, baseline)
 
     def test_reject_unsupported_configuration(self):
-        for kwargs in ({"schema": 2}, {"country": "XXX"}, {"locations": (1,)}, {"reward_strength": 9}):
+        for kwargs in ({"schema": 2}, {"country": "BAD-TAG"}, {"locations": (1,)}, {"reward_strength": 9}):
             with self.assertRaises(ValueError):
                 manifest(**kwargs)

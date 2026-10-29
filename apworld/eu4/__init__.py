@@ -4,15 +4,17 @@ from pathlib import Path
 
 from worlds.AutoWorld import WebWorld, World
 from BaseClasses import Tutorial
+from Options import OptionGroup
 
 from . import items, regions, rules
-from .options import EU4Options
-from .runtime.data import COUNTRIES, GAME, ITEMS, OBJECTIVES, select_objectives
+from .options import CustomStartingCountry, EU4Options
+from .runtime.data import GAME, ITEMS, OBJECTIVES, select_objectives
 from .runtime.manifest import Manifest
 from . import launcher  # Register the client without importing its GUI during generation.
 
 
 class EU4WebWorld(WebWorld):
+    option_groups = [OptionGroup("Other country (advanced)", [CustomStartingCountry], start_collapsed=True)]
     tutorials = [Tutorial("EU4 setup", "Install the Launcher client and seed-specific mod.",
                           "English", "setup_en.md", "setup/en", ["EU4 Archipelago contributors"])]
 
@@ -31,7 +33,7 @@ class EU4World(World):
                                        bool(self.options.enable_economic_checks),
                                        bool(self.options.enable_technology_checks))
         return Manifest(str(self.multiworld.seed_name), self.player, 0,
-                        COUNTRIES[self.options.starting_country.value],
+                        self.options.country_tag,
                         tuple(o.id for o in objectives), self.options.goal_difficulty.value,
                         self.options.reward_strength.value)
 

@@ -60,6 +60,19 @@ phase 2 is incomplete, even if all Python tests pass.
 8. Receive and apply the required charters, ratify, save; verify server goal 30.
 9. Repeat with two EU4 slots plus a different game, separate campaigns/user
    directories, then test BRA/HAB with only calendar checks and no paid DLC.
+10. Generate a non-legacy tag (e.g. BYZ, MNG or AZT) through Options
+    Creator and the generator. Verify that the manifest and installed bind decision
+    name the same country, bind it on 1444-11-11, then send a check, apply a reward,
+    save and restart. Repeat across a small country, subject and low-technology
+    start. Keep the fixed thresholds' balance observations separate from bridge
+    correctness. Try a wrong country and a different starting date: binding must
+    not succeed. A syntactically valid but nonexistent tag may pass generation;
+    it must not bind any unrelated country. Keep old-manifest update coverage too.
+11. In the named selector, confirm France is shown initially and select a different
+    country by name. Export and generate its YAML, then install/bind the matching
+    country. For an unlisted tag, select Other country and edit the advanced field;
+    verify that returning to a named choice ignores the advanced tag. Do not claim
+    the shortlist is the complete 1444 country roster.
 
 A synthetic-save demo, fake CommonContext or unit test cannot substitute for
 these observations. Record all failures, including unsupported game syntax.

@@ -45,7 +45,7 @@ class PackagingTests(unittest.TestCase):
                 self.assertIn("docs/installation.md", kit.namelist())
                 self.assertFalse(any("poc" in n.lower() for n in kit.namelist()))
             metadata = json.loads(first[2].read_text())
-            self.assertEqual(metadata["version"], "0.3.1")
+            self.assertEqual(metadata["version"], builder.VERSION)
             for artifact in first:
                 sums = (artifact.parent / "SHA256SUMS").read_text()
                 self.assertIn(f"{hashlib.sha256(artifact.read_bytes()).hexdigest()}  {artifact.name}", sums)

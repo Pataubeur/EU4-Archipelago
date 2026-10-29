@@ -7,7 +7,7 @@ import logging
 import sys
 from pathlib import Path
 
-from .data import COUNTRIES, ITEMS, select_objectives
+from .data import ITEMS, country_tag, select_objectives
 from .manifest import Manifest
 from .locking import ProcessLock
 from .persistence import State
@@ -58,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
     gui.add_argument("--ap-root", type=Path)
     poc = sub.add_parser("poc-manifest", help="Create an OFFLINE PoC identity, not an AP-generated seed")
     poc.add_argument("--output", type=Path, required=True)
-    poc.add_argument("--country", choices=COUNTRIES, default="FRA")
+    poc.add_argument("--country", type=country_tag, default="FRA", help="EU4 tag playable on 1444-11-11")
     reward = sub.add_parser("poc-reward", help="Queue one test item; OFFLINE-POC manifests only")
     reward.add_argument("--manifest", type=Path, required=True)
     reward.add_argument("--state", type=Path, required=True)

@@ -15,8 +15,8 @@ user folder before installing the integration.
 
 ## Install Archipelago and prepare your player
 
-1. Extract `eu4-player-kit-0.3.1.zip` supplied by the maintainer. If checksums
-   accompany it, compare `Get-FileHash .\eu4-player-kit-0.3.1.zip -Algorithm SHA256`
+1. Extract `eu4-player-kit-0.4.1.zip` supplied by the maintainer. If checksums
+   accompany it, compare `Get-FileHash .\eu4-player-kit-0.4.1.zip -Algorithm SHA256`
    with the ZIP's line in `SHA256SUMS`.
 2. Install [Archipelago 0.6.7](https://github.com/ArchipelagoMW/Archipelago/releases/tag/0.6.7).
    In its Launcher choose **Install APWorld**, select `eu4.apworld`, then close
@@ -24,12 +24,27 @@ user folder before installing the integration.
    `custom_worlds` (use **Browse Files** to locate it). Keep the name `eu4.apworld`.
    Move duplicate EU4 packages outside AP search paths when updating.
 3. Edit `example.yaml` in a text editor. Set a unique `name`, choose
-   `starting_country` and the other options, preserving indentation. Send it to
+   `starting_country` and the other options, preserving indentation. Set any
+   playable starting country's tag, e.g. `byz`, `mng` or `azt`; case is ignored.
+   Names from the menu, such as `France` or `Ming`, are also accepted. Send it to
    your host. **Generate Template Options** in the Launcher can also export EU4's
    complete template after package installation.
 4. The host installs the same package and generates the multiworld. Obtain your
    `AP_<token>_P<slot>.apeu4.json` from its output ZIP, server address and password
    if needed. Keep the manifest for this campaign.
+
+Alternatively open **Options Creator** in AP 0.6.7. **Starting Country** is a
+dropdown with 58 alphabetically sorted named shortcuts and **France (FRA)**
+selected by default. Choose the desired country and export the YAML; there is
+no blank tag input next to the normal selection. For an unlisted country,
+choose **Other country (advanced tag)**, expand **Other country (advanced)**
+and change **Other Country Tag** from its prefilled `FRA` to the desired tag.
+That advanced field is ignored for normal selections. The shortlist is not a
+complete game-country catalogue. `random` chooses among its 58 named countries,
+never the advanced entry. The generator checks tag
+syntax but has no installed-game country catalogue: the country must actually
+be playable in your EU4 installation on 1444-11-11. Incorrect or nonexistent
+tags cannot bind a campaign or pass save-country validation.
 
 The `.apworld` installs code; YAML selects preferences before generation; the
 manifest identifies a generated seed and slot. They are not interchangeable.
@@ -94,6 +109,11 @@ entire `<EU4 user folder>/eu4ap/` directory. Replace `eu4.apworld` through
 mod while EU4 is closed and load the same save. Saves and
 `eu4ap/<token>/campaign.json` are retained. Do not generate a new seed to update
 an existing campaign.
+
+Version 0.4.1 keeps the manifest schema, seed tokens and IDs unchanged for existing
+campaigns. Old eight-country YAMLs, including their numeric option values, remain
+valid. Do not edit an existing manifest to switch countries: generate a new seed
+and use a new campaign instead.
 
 A different manifest switches the active mod, backing up the previous mod to
 `eu4ap/mod-backups/<token>-<timestamp>/`. To resume an old campaign, close EU4,

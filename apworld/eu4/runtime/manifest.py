@@ -5,7 +5,7 @@ import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-from .data import BY_ID, COUNTRIES
+from .data import BY_ID, country_tag
 
 
 @dataclass(frozen=True)
@@ -28,8 +28,8 @@ class Manifest:
             raise ValueError("Invalid manifest field types")
         if self.schema != 1 or not self.seed or self.slot < 1 or self.team < 0:
             raise ValueError("Invalid manifest identity/schema")
-        if self.country not in COUNTRIES:
-            raise ValueError("Unsupported starting country")
+        if country_tag(self.country) != self.country:
+            raise ValueError("Manifest country tag must be uppercase without whitespace")
         if not 10 <= len(self.locations) <= 20 or len(set(self.locations)) != len(self.locations):
             raise ValueError("Manifest requires 10-20 unique objectives")
         if any(i not in BY_ID for i in self.locations):

@@ -2,10 +2,23 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import re
 
 GAME = "Europa Universalis IV"
 BASE_ID = 4_837_000  # Provisional community IDs, not an upstream allocation.
-COUNTRIES = ("FRA", "CAS", "ENG", "POR", "HAB", "BRA", "POL", "TUR")
+# These are UI shortcuts, not a whitelist. Keep their order for legacy options.
+COUNTRY_PRESETS = ("FRA", "CAS", "ENG", "POR", "HAB", "BRA", "POL", "TUR")
+
+
+def country_tag(value: str) -> str:
+    """Validate a script-safe tag; game availability is checked by the player/save."""
+    if not isinstance(value, str) or not value.isascii():
+        raise ValueError("Country must be an EU4 tag, for example FRA, BYZ or MNG")
+    tag = value.strip().upper()
+    if not re.fullmatch(r"[A-Z][A-Z0-9]{2}", tag, flags=re.ASCII):
+        raise ValueError("Country must be a three-character EU4 tag: a letter followed "
+                         "by two letters or digits (for example FRA, BYZ or MNG)")
+    return tag
 
 
 @dataclass(frozen=True)

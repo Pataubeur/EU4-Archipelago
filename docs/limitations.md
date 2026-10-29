@@ -13,9 +13,15 @@
   and should not be used for achievements. Use a separate launcher playset.
 - No paid gameplay DLC is intentionally required. This must still be checked
   with a no-DLC playtest. Do not infer DLC compatibility from mocks.
-- Only the fixed 1444-11-11 start and eight listed tags are supported. Custom
-  nations, random new worlds, total conversions, spectator play, tag changes
-  and changing mods during the campaign are unsupported.
+- Only the fixed 1444-11-11 start is supported. Any country tag can be configured,
+  but it must identify a country actually playable at that date. The generator
+  validates syntax without an exhaustive game-country catalogue. Custom nations,
+  random new worlds, total conversions, spectator play, tag changes and changing
+  mods during the campaign remain unsupported. Not every country is playtested.
+- Fixed treasury/technology thresholds have different difficulty across countries.
+  Disable these checks for a calendar-only pool if needed. `random` country
+  selection uses only the 58 named shortcuts. The list is not exhaustive;
+  unlisted countries remain selectable using Other country and its advanced tag.
 - No real save fixture is bundled. The parser has synthetic text/ZIP fixtures;
   a user-provided genuine save is necessary to establish format compatibility.
 - Returning to an older save can lose already-applied rewards while AP checks

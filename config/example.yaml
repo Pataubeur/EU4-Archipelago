@@ -4,7 +4,11 @@ requires:
   version: 0.6.7
 Europa Universalis IV:
   progression_balancing: 50
+  # Any country playable on 1444-11-11, by tag (e.g. fra, byz, mng).
+  # Options Creator offers named countries; listed names such as France also work.
+  # For an unlisted country in the UI: choose Other country, then set its advanced tag.
   starting_country: fra
+  # custom_starting_country: K00  # Used only with starting_country: other_country
   goal_difficulty: normal
   location_count: 16
   enable_economic_checks: true

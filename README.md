@@ -5,7 +5,7 @@ checks; received items produce rewards applied through EU4's console.
 **EU4 Client is included in the Archipelago Launcher.** Players need neither
 this repository nor a separate Python installation.
 
-**0.3.1 is a release candidate.** Windows Archipelago 0.6.7 is the supported test
+**0.4.1 is a release candidate.** Windows Archipelago 0.6.7 is the supported test
 target; EU4 1.37.5.0, non-Ironman, is the engine target. Packaging, synthetic-save
 synchronization and real AP generation can be checked automatically.
 **Live EU4 rewards, daily events and mixed-game play still need acceptance.**
@@ -13,13 +13,16 @@ Read the [validation report](docs/validation.md) before using an important campa
 
 ## Windows quick start
 
-1. Download and extract `eu4-player-kit-0.3.1.zip` supplied by the maintainer.
+1. Download and extract `eu4-player-kit-0.4.1.zip` supplied by the maintainer.
    Build scripts do not publish a release.
 2. Install [Archipelago 0.6.7](https://github.com/ArchipelagoMW/Archipelago/releases/tag/0.6.7).
    In its Launcher choose **Install APWorld**, select `eu4.apworld`, then fully
    restart it. **EU4 Client** should appear under Clients.
-3. Edit `example.yaml`: set a unique `name` and choose your options. Send the YAML
-   to your host, who also needs this `.apworld` to generate the seed.
+3. Open **Options Creator**, select **Europa Universalis IV**, enter a unique
+   player name and choose your country/options. Export the YAML and send it to
+   your host, who also needs this `.apworld` to generate the seed. Editing
+   `example.yaml` remains an alternative; `starting_country` accepts tags such
+   as `fra`, `byz` and `mng` for countries playable on 1444-11-11.
 4. Obtain your **generated `.apeu4.json` manifest** from the host. In **EU4 Client**,
    select it and your EU4 Documents user folder. With EU4 closed, click
    **Installer le mod**. The client creates the seed-specific mod.
@@ -40,6 +43,15 @@ Read the [validation report](docs/validation.md) before using an important campa
 `OFFLINE-POC` is a developer demonstration and cannot join a real seed.
 There is no generic online mod ZIP: the client renders the mod from your manifest.
 Use the standard Archipelago generator and server.
+
+In **Options Creator**, choose a country from the alphabetical list of 58 named
+shortcuts, such as **France (FRA)** (the default), **Byzantium (BYZ)** or **Ming (MNG)**.
+For an unlisted country select **Other country (advanced tag)**, expand
+**Other country (advanced)** and enter its tag. Old tag-based YAMLs remain valid.
+The list is a shortlist, not an exhaustive game catalogue. Generation checks
+the tag's syntax, not whether the country exists
+on the starting map. Select an existing playable country on **1444-11-11**.
+Other start dates and switching countries during a campaign remain unsupported.
 
 [Player guide, updates and troubleshooting](docs/installation.md) ·
 [Gameplay](docs/gameplay.md) · [Known limits](docs/limitations.md) ·
