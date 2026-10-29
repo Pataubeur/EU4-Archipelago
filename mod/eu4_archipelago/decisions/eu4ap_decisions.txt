@@ -1,0 +1,37 @@
+country_decisions = {
+    eu4ap_bind = {
+        potential = { ai = no tag = FRA NOT = { has_country_flag = eu4ap_bound } }
+        allow = { started_in = 1444.11.11 }
+        effect = {
+            set_country_flag = eu4ap_bound
+            set_country_flag = eu4ap_seed_07502effa99c7120fb38d675
+            eu4ap_scan = yes
+            if = {
+                limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan } }
+                set_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan
+                country_event = { id = eu4ap.2 days = 1 }
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+    eu4ap_rescan = {
+        potential = { ai = no has_country_flag = eu4ap_seed_07502effa99c7120fb38d675 }
+        allow = { always = yes }
+        effect = {
+            eu4ap_scan = yes
+            if = {
+                limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan } }
+                set_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan
+                country_event = { id = eu4ap.2 days = 1 }
+            }
+        }
+        ai_will_do = { factor = 0 }
+    }
+    eu4ap_ratify = {
+        potential = { ai = no has_country_flag = eu4ap_seed_07502effa99c7120fb38d675
+            NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_goal } }
+        allow = { has_country_flag = eu4ap_07502effa99c7120fb38d675_charter_0 has_country_flag = eu4ap_07502effa99c7120fb38d675_charter_1 has_country_flag = eu4ap_07502effa99c7120fb38d675_charter_2 }
+        effect = { set_country_flag = eu4ap_07502effa99c7120fb38d675_goal }
+        ai_will_do = { factor = 0 }
+    }
+}

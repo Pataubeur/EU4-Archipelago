@@ -1,0 +1,23 @@
+{
+  "seed": "OFFLINE-POC",
+  "slot": 1,
+  "team": 0,
+  "country": "FRA",
+  "locations": [
+    4837001,
+    4837002,
+    4837003,
+    4837004,
+    4837005,
+    4837006,
+    4837100,
+    4837101,
+    4837102,
+    4837103,
+    4837200,
+    4837201
+  ],
+  "charters_required": 3,
+  "reward_strength": 1,
+  "schema": 1
+}

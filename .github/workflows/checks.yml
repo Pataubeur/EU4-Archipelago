@@ -1,0 +1,67 @@
+name: Check and prepare artifacts
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      check_ap_source:
+        description: Also check the official Archipelago 0.6.7 source runtime
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install PyYAML
+      - run: python -m unittest discover -s tests -t . -v
+      - run: python scripts/demo_bridge.py
+      - run: python scripts/build_apworld.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: eu4-player-release-python-${{ matrix.python }}
+          path: |
+            dist/release/eu4.apworld
+            dist/release/example.yaml
+            dist/release/RELEASE.json
+            dist/release/eu4-player-kit-*.zip
+            dist/release/SHA256SUMS
+          if-no-files-found: error
+
+  archipelago-source:
+    if: github.event_name == 'workflow_dispatch' && inputs.check_ap_source
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: ArchipelagoMW/Archipelago
+          ref: '0.6.7'
+          path: local/upstream-ap
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python scripts/build_apworld.py
+      - name: Prepare official runtime dependencies
+        working-directory: local/upstream-ap
+        run: python ModuleUpdate.py --yes --force
+      - name: Install candidate into custom_worlds
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force local/upstream-ap/custom_worlds
+          Copy-Item dist/release/eu4.apworld local/upstream-ap/custom_worlds/eu4.apworld
+      - name: Run native AP World suite
+        working-directory: local/upstream-ap
+        run: python -m unittest worlds.eu4.test -v
+      - run: python scripts/check_archipelago.py --ap-root local/upstream-ap

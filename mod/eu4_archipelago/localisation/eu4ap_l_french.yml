@@ -1,0 +1,7 @@
+﻿l_french:
+ eu4ap_bind_title:0 "§MArchipelago : lier cette campagne§!"
+ eu4ap_bind_desc:0 "Liez ce pays au joueur Archipelago configuré dans le mod installé. Sauvegardez après avoir lié la campagne."
+ eu4ap_rescan_title:0 "§MArchipelago : vérifier les objectifs§!"
+ eu4ap_rescan_desc:0 "Enregistrez les objectifs accomplis, puis sauvegardez pour synchroniser la campagne avec le client."
+ eu4ap_ratify_title:0 "§MArchipelago : ratifier les chartes royales§!"
+ eu4ap_ratify_desc:0 "Accomplissez l'objectif du multiworld après avoir reçu toutes les chartes royales requises. Sauvegardez pour signaler la victoire."

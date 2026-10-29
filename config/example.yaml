@@ -1,0 +1,12 @@
+name: EU4Player
+game: Europa Universalis IV
+requires:
+  version: 0.6.7
+Europa Universalis IV:
+  progression_balancing: 50
+  starting_country: fra
+  goal_difficulty: normal
+  location_count: 16
+  enable_economic_checks: true
+  enable_technology_checks: true
+  reward_strength: normal

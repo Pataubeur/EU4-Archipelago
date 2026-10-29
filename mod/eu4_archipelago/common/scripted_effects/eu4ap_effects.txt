@@ -1,0 +1,50 @@
+eu4ap_scan = {
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837001 } is_year = 1445 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837001
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837002 } is_year = 1446 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837002
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837003 } is_year = 1447 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837003
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837004 } is_year = 1448 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837004
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837005 } is_year = 1449 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837005
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837006 } is_year = 1450 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837006
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837100 } treasury = 100 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837100
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837101 } treasury = 250 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837101
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837102 } treasury = 500 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837102
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837103 } treasury = 1000 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837103
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837200 } adm_tech = 4 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837200
+    }
+    if = {
+        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837201 } dip_tech = 4 }
+        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837201
+    }
+}

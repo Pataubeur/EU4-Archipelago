@@ -1,0 +1,7 @@
+﻿l_english:
+ eu4ap_bind_title:0 "§MArchipelago: bind this campaign§!"
+ eu4ap_bind_desc:0 "Bind this country to the installed Archipelago slot. Save after binding."
+ eu4ap_rescan_title:0 "§MArchipelago: scan objectives now§!"
+ eu4ap_rescan_desc:0 "Record completed objectives, then save to synchronize with the client."
+ eu4ap_ratify_title:0 "§MArchipelago: ratify the royal charters§!"
+ eu4ap_ratify_desc:0 "Complete the Multiworld goal after receiving all required Royal Charters. Save to report victory."

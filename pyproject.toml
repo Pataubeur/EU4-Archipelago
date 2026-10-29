@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eu4-archipelago"
+dynamic = ["version"]
+description = "Save/console bridge and Launcher client for EU4 and Archipelago"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=7", "PyYAML>=6"]
+
+[project.scripts]
+eu4-ap = "eu4_client.main:main"
+
+[tool.setuptools]
+packages = ["eu4_client"]
+package-dir = {eu4_client = "apworld/eu4/runtime"}
+
+[tool.setuptools.dynamic]
+version = {attr = "eu4_client.version.VERSION"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

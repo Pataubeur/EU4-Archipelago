@@ -1,0 +1,38 @@
+namespace = eu4ap
+# Legacy monthly events queued in existing saves start the daily chain once.
+country_event = {
+    id = eu4ap.1
+    title = none
+    desc = none
+    picture = none
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = { ai = no has_country_flag = eu4ap_seed_07502effa99c7120fb38d675 }
+            eu4ap_scan = yes
+            if = {
+                limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan } }
+                set_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan
+                country_event = { id = eu4ap.2 days = 1 }
+            }
+        }
+    }
+    option = { }
+}
+country_event = {
+    id = eu4ap.2
+    title = none
+    desc = none
+    picture = none
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = { ai = no has_country_flag = eu4ap_seed_07502effa99c7120fb38d675 }
+            eu4ap_scan = yes
+            country_event = { id = eu4ap.2 days = 1 }
+        }
+    }
+    option = { }
+}
