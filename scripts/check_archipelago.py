@@ -53,10 +53,15 @@ def main() -> int:
                         target = root / "manifest.json"
                         target.write_bytes(archive.read(name))
                         found.append(Manifest.read(target))
-        if not found or not all(m.country == args.country and len(m.locations) == 16 for m in found):
+        if not found or not all(m.country == args.country and expected_size(m) for m in found):
             raise RuntimeError("Generation did not emit the expected valid EU4 manifest")
         print("PASS: real AP YAML generation and manifest validation. EU4 and server not tested.")
     return 0
+
+
+def expected_size(m: Manifest) -> bool:
+    """Classic manifests keep 16 checks; schema 2 sizes depend on country and length."""
+    return len(m.locations) == 16 if m.schema == 1 else 20 <= len(m.locations) <= 250
 
 
 def player_yaml(country: str) -> str:
@@ -79,7 +84,7 @@ def check_frozen(ap: Path, work: Path, country: str = "FRA", options_creator: bo
     if not package.is_file():
         raise ValueError("Build first: python scripts/build_apworld.py")
     shutil.copytree(ap, work, ignore=shutil.ignore_patterns(
-        "custom_worlds", "Players", "players", "output", "logs", "integration", "__pycache__",
+        "custom_worlds", "Players", "players", "output", "logs", "integration", "__pycache__", "eu4-validation",
         "_persistent_storage.yaml", "host.yaml", "*.log", "*.apsave"))
     (work / "custom_worlds").mkdir(exist_ok=True)
     shutil.copyfile(package, work / "custom_worlds/eu4.apworld")
@@ -109,8 +114,8 @@ def check_frozen(ap: Path, work: Path, country: str = "FRA", options_creator: bo
                     target.write_bytes(archive.read(name))
                     manifests.append(Manifest.read(target))
     if (len(manifests) != 1 or manifests[0].seed == "OFFLINE-POC"
-            or manifests[0].country != country or len(manifests[0].locations) != 16):
-        raise RuntimeError("Generation did not emit one real 16-location manifest")
+            or manifests[0].country != country or not expected_size(manifests[0])):
+        raise RuntimeError("Generation did not emit one real manifest of the expected size")
     marker = evidence / "gui-smoke.txt"
     run("ArchipelagoLauncher.exe", "EU4 Client", "--", "--profile", str(evidence / "client.json"),
         "--smoke-test", str(marker))

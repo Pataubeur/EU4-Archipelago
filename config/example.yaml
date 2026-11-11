@@ -9,8 +9,26 @@ Europa Universalis IV:
   # For an unlisted country in the UI: choose Other country, then set its advanced tag.
   starting_country: fra
   # custom_starting_country: K00  # Used only with starting_country: other_country
+  # normal: console or relaunch delivers items. ironman: relaunch EU4 to receive items.
+  save_mode: normal
+  # short (~4-6 h, to 1500), standard (~8-12 h, to 1575), long (20 h+, to 1700).
+  campaign_length: standard
+  # mixed = national ambition AND Seals of the Multiworld. royal_charters = classic 0.4 mode.
+  goal: mixed
+  national_ambition: auto
+  # Seals required for goal mixed (Royal Charters for royal_charters): easy 2, normal 3, hard 4.
   goal_difficulty: normal
+  reward_strength: normal
+  # DLCs enabled in your EU4 launcher, e.g. ["King of Kings", "Domination"]. Empty = no DLC.
+  owned_dlcs: []
+  fetters: ["admiralty", "chancery", "colonial", "guilds"]
+  region_keys: true
+  mission_checks: true
+  exclude_long_checks: true
+  trap_percentage: 0
+  ironman_traps: false
+  death_link: false
+  # royal_charters goal only:
   location_count: 16
   enable_economic_checks: true
   enable_technology_checks: true
-  reward_strength: normal

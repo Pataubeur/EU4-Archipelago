@@ -1,0 +1,303 @@
+defined_text = {
+    name = GetEU4APDelivery
+    random = no
+    text = {
+        localisation_key = eu4ap_dlv_done
+        trigger = { OR = { AND = { check_variable = { which = eu4ap_code value = 1018 } NOT = { check_variable = { which = eu4ap_code value = 1019 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1018 } AND = { check_variable = { which = eu4ap_code value = 1230 } NOT = { check_variable = { which = eu4ap_code value = 1231 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1230 } AND = { check_variable = { which = eu4ap_code value = 1663 } NOT = { check_variable = { which = eu4ap_code value = 1664 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1663 } AND = { check_variable = { which = eu4ap_code value = 2020 } NOT = { check_variable = { which = eu4ap_code value = 2021 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2020 } AND = { check_variable = { which = eu4ap_code value = 2031 } NOT = { check_variable = { which = eu4ap_code value = 2032 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2031 } AND = { check_variable = { which = eu4ap_code value = 2208 } NOT = { check_variable = { which = eu4ap_code value = 2209 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2208 } AND = { check_variable = { which = eu4ap_code value = 2318 } NOT = { check_variable = { which = eu4ap_code value = 2319 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2318 } AND = { check_variable = { which = eu4ap_code value = 2494 } NOT = { check_variable = { which = eu4ap_code value = 2495 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2494 } AND = { check_variable = { which = eu4ap_code value = 2501 } NOT = { check_variable = { which = eu4ap_code value = 2502 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2501 } AND = { check_variable = { which = eu4ap_code value = 2528 } NOT = { check_variable = { which = eu4ap_code value = 2529 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2528 } AND = { check_variable = { which = eu4ap_code value = 2553 } NOT = { check_variable = { which = eu4ap_code value = 2554 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2553 } AND = { check_variable = { which = eu4ap_code value = 2618 } NOT = { check_variable = { which = eu4ap_code value = 2619 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2618 } AND = { check_variable = { which = eu4ap_code value = 2649 } NOT = { check_variable = { which = eu4ap_code value = 2650 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2649 } AND = { check_variable = { which = eu4ap_code value = 2786 } NOT = { check_variable = { which = eu4ap_code value = 2787 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2786 } AND = { check_variable = { which = eu4ap_code value = 3044 } NOT = { check_variable = { which = eu4ap_code value = 3045 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3044 } AND = { check_variable = { which = eu4ap_code value = 3281 } NOT = { check_variable = { which = eu4ap_code value = 3282 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3281 } AND = { check_variable = { which = eu4ap_code value = 3289 } NOT = { check_variable = { which = eu4ap_code value = 3290 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3289 } AND = { check_variable = { which = eu4ap_code value = 3334 } NOT = { check_variable = { which = eu4ap_code value = 3335 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3334 } AND = { check_variable = { which = eu4ap_code value = 3407 } NOT = { check_variable = { which = eu4ap_code value = 3408 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3407 } AND = { check_variable = { which = eu4ap_code value = 4012 } NOT = { check_variable = { which = eu4ap_code value = 4013 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4012 } AND = { check_variable = { which = eu4ap_code value = 4102 } NOT = { check_variable = { which = eu4ap_code value = 4103 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4102 } AND = { check_variable = { which = eu4ap_code value = 4130 } NOT = { check_variable = { which = eu4ap_code value = 4131 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4130 } AND = { check_variable = { which = eu4ap_code value = 4329 } NOT = { check_variable = { which = eu4ap_code value = 4330 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4329 } AND = { check_variable = { which = eu4ap_code value = 4350 } NOT = { check_variable = { which = eu4ap_code value = 4351 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4350 } AND = { check_variable = { which = eu4ap_code value = 4578 } NOT = { check_variable = { which = eu4ap_code value = 4579 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4578 } AND = { check_variable = { which = eu4ap_code value = 4632 } NOT = { check_variable = { which = eu4ap_code value = 4633 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4632 } AND = { check_variable = { which = eu4ap_code value = 4909 } NOT = { check_variable = { which = eu4ap_code value = 4910 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4909 } AND = { check_variable = { which = eu4ap_code value = 4966 } NOT = { check_variable = { which = eu4ap_code value = 4967 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4966 } AND = { check_variable = { which = eu4ap_code value = 4996 } NOT = { check_variable = { which = eu4ap_code value = 4997 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4996 } AND = { check_variable = { which = eu4ap_code value = 5104 } NOT = { check_variable = { which = eu4ap_code value = 5105 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5104 } AND = { check_variable = { which = eu4ap_code value = 5242 } NOT = { check_variable = { which = eu4ap_code value = 5243 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5242 } AND = { check_variable = { which = eu4ap_code value = 5267 } NOT = { check_variable = { which = eu4ap_code value = 5268 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5267 } AND = { check_variable = { which = eu4ap_code value = 5617 } NOT = { check_variable = { which = eu4ap_code value = 5618 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5617 } AND = { check_variable = { which = eu4ap_code value = 5712 } NOT = { check_variable = { which = eu4ap_code value = 5713 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5712 } AND = { check_variable = { which = eu4ap_code value = 5756 } NOT = { check_variable = { which = eu4ap_code value = 5757 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5756 } AND = { check_variable = { which = eu4ap_code value = 5769 } NOT = { check_variable = { which = eu4ap_code value = 5770 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5769 } AND = { check_variable = { which = eu4ap_code value = 5938 } NOT = { check_variable = { which = eu4ap_code value = 5939 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5938 } AND = { check_variable = { which = eu4ap_code value = 5969 } NOT = { check_variable = { which = eu4ap_code value = 5970 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5969 } AND = { check_variable = { which = eu4ap_code value = 6081 } NOT = { check_variable = { which = eu4ap_code value = 6082 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6081 } AND = { check_variable = { which = eu4ap_code value = 6180 } NOT = { check_variable = { which = eu4ap_code value = 6181 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6180 } AND = { check_variable = { which = eu4ap_code value = 6194 } NOT = { check_variable = { which = eu4ap_code value = 6195 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6194 } AND = { check_variable = { which = eu4ap_code value = 6243 } NOT = { check_variable = { which = eu4ap_code value = 6244 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6243 } AND = { check_variable = { which = eu4ap_code value = 6328 } NOT = { check_variable = { which = eu4ap_code value = 6329 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6328 } AND = { check_variable = { which = eu4ap_code value = 6409 } NOT = { check_variable = { which = eu4ap_code value = 6410 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6409 } AND = { check_variable = { which = eu4ap_code value = 6451 } NOT = { check_variable = { which = eu4ap_code value = 6452 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6451 } AND = { check_variable = { which = eu4ap_code value = 6458 } NOT = { check_variable = { which = eu4ap_code value = 6459 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6458 } AND = { check_variable = { which = eu4ap_code value = 6796 } NOT = { check_variable = { which = eu4ap_code value = 6797 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6796 } AND = { check_variable = { which = eu4ap_code value = 6866 } NOT = { check_variable = { which = eu4ap_code value = 6867 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6866 } AND = { check_variable = { which = eu4ap_code value = 7306 } NOT = { check_variable = { which = eu4ap_code value = 7307 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7306 } AND = { check_variable = { which = eu4ap_code value = 7311 } NOT = { check_variable = { which = eu4ap_code value = 7312 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7311 } AND = { check_variable = { which = eu4ap_code value = 7534 } NOT = { check_variable = { which = eu4ap_code value = 7535 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7534 } AND = { check_variable = { which = eu4ap_code value = 7634 } NOT = { check_variable = { which = eu4ap_code value = 7635 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7634 } AND = { check_variable = { which = eu4ap_code value = 7890 } NOT = { check_variable = { which = eu4ap_code value = 7891 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7890 } AND = { check_variable = { which = eu4ap_code value = 8113 } NOT = { check_variable = { which = eu4ap_code value = 8114 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8113 } AND = { check_variable = { which = eu4ap_code value = 8253 } NOT = { check_variable = { which = eu4ap_code value = 8254 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8253 } AND = { check_variable = { which = eu4ap_code value = 8290 } NOT = { check_variable = { which = eu4ap_code value = 8291 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8290 } AND = { check_variable = { which = eu4ap_code value = 8339 } NOT = { check_variable = { which = eu4ap_code value = 8340 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8339 } AND = { check_variable = { which = eu4ap_code value = 8735 } NOT = { check_variable = { which = eu4ap_code value = 8736 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8735 } AND = { check_variable = { which = eu4ap_code value = 8808 } NOT = { check_variable = { which = eu4ap_code value = 8809 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8808 } AND = { check_variable = { which = eu4ap_code value = 8815 } NOT = { check_variable = { which = eu4ap_code value = 8816 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8815 } AND = { check_variable = { which = eu4ap_code value = 8961 } NOT = { check_variable = { which = eu4ap_code value = 8962 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8961 } AND = { check_variable = { which = eu4ap_code value = 9016 } NOT = { check_variable = { which = eu4ap_code value = 9017 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9016 } AND = { check_variable = { which = eu4ap_code value = 9086 } NOT = { check_variable = { which = eu4ap_code value = 9087 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9086 } AND = { check_variable = { which = eu4ap_code value = 9268 } NOT = { check_variable = { which = eu4ap_code value = 9269 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9268 } AND = { check_variable = { which = eu4ap_code value = 9322 } NOT = { check_variable = { which = eu4ap_code value = 9323 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9322 } AND = { check_variable = { which = eu4ap_code value = 9376 } NOT = { check_variable = { which = eu4ap_code value = 9377 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9376 } AND = { check_variable = { which = eu4ap_code value = 9541 } NOT = { check_variable = { which = eu4ap_code value = 9542 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9541 } AND = { check_variable = { which = eu4ap_code value = 9725 } NOT = { check_variable = { which = eu4ap_code value = 9726 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9725 } AND = { check_variable = { which = eu4ap_code value = 9852 } NOT = { check_variable = { which = eu4ap_code value = 9853 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9852 } AND = { check_variable = { which = eu4ap_code value = 9896 } NOT = { check_variable = { which = eu4ap_code value = 9897 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9896 } AND = { check_variable = { which = eu4ap_code value = 9965 } NOT = { check_variable = { which = eu4ap_code value = 9966 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9965 } AND = { check_variable = { which = eu4ap_code value = 9969 } NOT = { check_variable = { which = eu4ap_code value = 9970 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9969 } AND = { check_variable = { which = eu4ap_code value = 9989 } NOT = { check_variable = { which = eu4ap_code value = 9990 } } has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9989 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_1018
+        trigger = { check_variable = { which = eu4ap_code value = 1018 } NOT = { check_variable = { which = eu4ap_code value = 1019 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_1230
+        trigger = { check_variable = { which = eu4ap_code value = 1230 } NOT = { check_variable = { which = eu4ap_code value = 1231 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_1663
+        trigger = { check_variable = { which = eu4ap_code value = 1663 } NOT = { check_variable = { which = eu4ap_code value = 1664 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2020
+        trigger = { check_variable = { which = eu4ap_code value = 2020 } NOT = { check_variable = { which = eu4ap_code value = 2021 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2031
+        trigger = { check_variable = { which = eu4ap_code value = 2031 } NOT = { check_variable = { which = eu4ap_code value = 2032 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2208
+        trigger = { check_variable = { which = eu4ap_code value = 2208 } NOT = { check_variable = { which = eu4ap_code value = 2209 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2318
+        trigger = { check_variable = { which = eu4ap_code value = 2318 } NOT = { check_variable = { which = eu4ap_code value = 2319 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2494
+        trigger = { check_variable = { which = eu4ap_code value = 2494 } NOT = { check_variable = { which = eu4ap_code value = 2495 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2501
+        trigger = { check_variable = { which = eu4ap_code value = 2501 } NOT = { check_variable = { which = eu4ap_code value = 2502 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2528
+        trigger = { check_variable = { which = eu4ap_code value = 2528 } NOT = { check_variable = { which = eu4ap_code value = 2529 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2553
+        trigger = { check_variable = { which = eu4ap_code value = 2553 } NOT = { check_variable = { which = eu4ap_code value = 2554 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2618
+        trigger = { check_variable = { which = eu4ap_code value = 2618 } NOT = { check_variable = { which = eu4ap_code value = 2619 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2649
+        trigger = { check_variable = { which = eu4ap_code value = 2649 } NOT = { check_variable = { which = eu4ap_code value = 2650 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_2786
+        trigger = { check_variable = { which = eu4ap_code value = 2786 } NOT = { check_variable = { which = eu4ap_code value = 2787 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_3044
+        trigger = { check_variable = { which = eu4ap_code value = 3044 } NOT = { check_variable = { which = eu4ap_code value = 3045 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_3281
+        trigger = { check_variable = { which = eu4ap_code value = 3281 } NOT = { check_variable = { which = eu4ap_code value = 3282 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_3289
+        trigger = { check_variable = { which = eu4ap_code value = 3289 } NOT = { check_variable = { which = eu4ap_code value = 3290 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_3334
+        trigger = { check_variable = { which = eu4ap_code value = 3334 } NOT = { check_variable = { which = eu4ap_code value = 3335 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_3407
+        trigger = { check_variable = { which = eu4ap_code value = 3407 } NOT = { check_variable = { which = eu4ap_code value = 3408 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4012
+        trigger = { check_variable = { which = eu4ap_code value = 4012 } NOT = { check_variable = { which = eu4ap_code value = 4013 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4102
+        trigger = { check_variable = { which = eu4ap_code value = 4102 } NOT = { check_variable = { which = eu4ap_code value = 4103 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4130
+        trigger = { check_variable = { which = eu4ap_code value = 4130 } NOT = { check_variable = { which = eu4ap_code value = 4131 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4329
+        trigger = { check_variable = { which = eu4ap_code value = 4329 } NOT = { check_variable = { which = eu4ap_code value = 4330 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4350
+        trigger = { check_variable = { which = eu4ap_code value = 4350 } NOT = { check_variable = { which = eu4ap_code value = 4351 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4578
+        trigger = { check_variable = { which = eu4ap_code value = 4578 } NOT = { check_variable = { which = eu4ap_code value = 4579 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4632
+        trigger = { check_variable = { which = eu4ap_code value = 4632 } NOT = { check_variable = { which = eu4ap_code value = 4633 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4909
+        trigger = { check_variable = { which = eu4ap_code value = 4909 } NOT = { check_variable = { which = eu4ap_code value = 4910 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4966
+        trigger = { check_variable = { which = eu4ap_code value = 4966 } NOT = { check_variable = { which = eu4ap_code value = 4967 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_4996
+        trigger = { check_variable = { which = eu4ap_code value = 4996 } NOT = { check_variable = { which = eu4ap_code value = 4997 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_5104
+        trigger = { check_variable = { which = eu4ap_code value = 5104 } NOT = { check_variable = { which = eu4ap_code value = 5105 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_5242
+        trigger = { check_variable = { which = eu4ap_code value = 5242 } NOT = { check_variable = { which = eu4ap_code value = 5243 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_5267
+        trigger = { check_variable = { which = eu4ap_code value = 5267 } NOT = { check_variable = { which = eu4ap_code value = 5268 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_5617
+        trigger = { check_variable = { which = eu4ap_code value = 5617 } NOT = { check_variable = { which = eu4ap_code value = 5618 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_5712
+        trigger = { check_variable = { which = eu4ap_code value = 5712 } NOT = { check_variable = { which = eu4ap_code value = 5713 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_5756
+        trigger = { check_variable = { which = eu4ap_code value = 5756 } NOT = { check_variable = { which = eu4ap_code value = 5757 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_5769
+        trigger = { check_variable = { which = eu4ap_code value = 5769 } NOT = { check_variable = { which = eu4ap_code value = 5770 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_5938
+        trigger = { check_variable = { which = eu4ap_code value = 5938 } NOT = { check_variable = { which = eu4ap_code value = 5939 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_5969
+        trigger = { check_variable = { which = eu4ap_code value = 5969 } NOT = { check_variable = { which = eu4ap_code value = 5970 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6081
+        trigger = { check_variable = { which = eu4ap_code value = 6081 } NOT = { check_variable = { which = eu4ap_code value = 6082 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6180
+        trigger = { check_variable = { which = eu4ap_code value = 6180 } NOT = { check_variable = { which = eu4ap_code value = 6181 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6194
+        trigger = { check_variable = { which = eu4ap_code value = 6194 } NOT = { check_variable = { which = eu4ap_code value = 6195 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6243
+        trigger = { check_variable = { which = eu4ap_code value = 6243 } NOT = { check_variable = { which = eu4ap_code value = 6244 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6328
+        trigger = { check_variable = { which = eu4ap_code value = 6328 } NOT = { check_variable = { which = eu4ap_code value = 6329 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6409
+        trigger = { check_variable = { which = eu4ap_code value = 6409 } NOT = { check_variable = { which = eu4ap_code value = 6410 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6451
+        trigger = { check_variable = { which = eu4ap_code value = 6451 } NOT = { check_variable = { which = eu4ap_code value = 6452 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6458
+        trigger = { check_variable = { which = eu4ap_code value = 6458 } NOT = { check_variable = { which = eu4ap_code value = 6459 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6796
+        trigger = { check_variable = { which = eu4ap_code value = 6796 } NOT = { check_variable = { which = eu4ap_code value = 6797 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_6866
+        trigger = { check_variable = { which = eu4ap_code value = 6866 } NOT = { check_variable = { which = eu4ap_code value = 6867 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_7306
+        trigger = { check_variable = { which = eu4ap_code value = 7306 } NOT = { check_variable = { which = eu4ap_code value = 7307 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_7311
+        trigger = { check_variable = { which = eu4ap_code value = 7311 } NOT = { check_variable = { which = eu4ap_code value = 7312 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_7534
+        trigger = { check_variable = { which = eu4ap_code value = 7534 } NOT = { check_variable = { which = eu4ap_code value = 7535 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_7634
+        trigger = { check_variable = { which = eu4ap_code value = 7634 } NOT = { check_variable = { which = eu4ap_code value = 7635 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_7890
+        trigger = { check_variable = { which = eu4ap_code value = 7890 } NOT = { check_variable = { which = eu4ap_code value = 7891 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_8113
+        trigger = { check_variable = { which = eu4ap_code value = 8113 } NOT = { check_variable = { which = eu4ap_code value = 8114 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_8253
+        trigger = { check_variable = { which = eu4ap_code value = 8253 } NOT = { check_variable = { which = eu4ap_code value = 8254 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_8290
+        trigger = { check_variable = { which = eu4ap_code value = 8290 } NOT = { check_variable = { which = eu4ap_code value = 8291 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_8339
+        trigger = { check_variable = { which = eu4ap_code value = 8339 } NOT = { check_variable = { which = eu4ap_code value = 8340 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_8735
+        trigger = { check_variable = { which = eu4ap_code value = 8735 } NOT = { check_variable = { which = eu4ap_code value = 8736 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_8808
+        trigger = { check_variable = { which = eu4ap_code value = 8808 } NOT = { check_variable = { which = eu4ap_code value = 8809 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_8815
+        trigger = { check_variable = { which = eu4ap_code value = 8815 } NOT = { check_variable = { which = eu4ap_code value = 8816 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_8961
+        trigger = { check_variable = { which = eu4ap_code value = 8961 } NOT = { check_variable = { which = eu4ap_code value = 8962 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9016
+        trigger = { check_variable = { which = eu4ap_code value = 9016 } NOT = { check_variable = { which = eu4ap_code value = 9017 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9086
+        trigger = { check_variable = { which = eu4ap_code value = 9086 } NOT = { check_variable = { which = eu4ap_code value = 9087 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9268
+        trigger = { check_variable = { which = eu4ap_code value = 9268 } NOT = { check_variable = { which = eu4ap_code value = 9269 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9322
+        trigger = { check_variable = { which = eu4ap_code value = 9322 } NOT = { check_variable = { which = eu4ap_code value = 9323 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9376
+        trigger = { check_variable = { which = eu4ap_code value = 9376 } NOT = { check_variable = { which = eu4ap_code value = 9377 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9541
+        trigger = { check_variable = { which = eu4ap_code value = 9541 } NOT = { check_variable = { which = eu4ap_code value = 9542 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9725
+        trigger = { check_variable = { which = eu4ap_code value = 9725 } NOT = { check_variable = { which = eu4ap_code value = 9726 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9852
+        trigger = { check_variable = { which = eu4ap_code value = 9852 } NOT = { check_variable = { which = eu4ap_code value = 9853 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9896
+        trigger = { check_variable = { which = eu4ap_code value = 9896 } NOT = { check_variable = { which = eu4ap_code value = 9897 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9965
+        trigger = { check_variable = { which = eu4ap_code value = 9965 } NOT = { check_variable = { which = eu4ap_code value = 9966 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9969
+        trigger = { check_variable = { which = eu4ap_code value = 9969 } NOT = { check_variable = { which = eu4ap_code value = 9970 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_9989
+        trigger = { check_variable = { which = eu4ap_code value = 9989 } NOT = { check_variable = { which = eu4ap_code value = 9990 } } }
+    }
+    text = {
+        localisation_key = eu4ap_dlv_unknown
+    }
+}

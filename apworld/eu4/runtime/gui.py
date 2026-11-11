@@ -68,7 +68,7 @@ def launch(*argv: str) -> None:
             for key, label, filters in (
                 ("manifest", "Manifeste de la partie", ["*.apeu4.json"]),
                 ("user_dir", "Dossier utilisateur EU4", None),
-                ("save", "Sauvegarde EU4", ["*.eu4"]),
+                ("save", "Sauvegarde (normal, facultatif)", ["*.eu4"]),
                 ("server", "Serveur (adresse:port)", False),
                 ("name", "Nom du joueur AP", False),
                 ("password", "Mot de passe (facultatif)", False),
@@ -101,7 +101,8 @@ def launch(*argv: str) -> None:
             actions.add_widget(self.connect_button)
             root.add_widget(actions)
             hint = BoxLayout(size_hint_y=None, height=dp(48), spacing=dp(8))
-            hint.add_widget(Label(text="Objets reçus : dans la console EU4, exécutez\nrun eu4ap_sync.txt, puis sauvegardez.",
+            hint.add_widget(Label(text="Mode normal : console « run eu4ap_sync.txt » ou relance d'EU4.\n"
+                                       "Ironman : fermez puis relancez EU4 pour recevoir les objets.",
                                   font_size=dp(14)))
             copy_button = Button(text="Copier la commande EU4", size_hint_x=None, width=dp(235))
             copy_button.bind(on_release=lambda _: Clipboard.copy("run eu4ap_sync.txt"))
@@ -190,8 +191,14 @@ def launch(*argv: str) -> None:
                 path = profile.install()
                 profile.write(self.profile_path)
                 manifest = profile.read_manifest()
-                self.summary.text = (f"Mod installé : {manifest.country}, 1444-11-11, sans Ironman.\n"
-                                     "Activez-le, prenez la décision de liaison, puis sauvegardez localement.")
+                if manifest.schema == 1:
+                    self.summary.text = (f"Mod installé : {manifest.country}, 1444-11-11, sans Ironman.\n"
+                                         "Activez-le, prenez la décision de liaison, puis sauvegardez localement.")
+                else:
+                    mode = "Ironman" if manifest.save_mode == "ironman" else "normal"
+                    self.summary.text = (f"Mod installé : {manifest.country}, 1444-11-11, mode {mode}, "
+                                         f"ambition {manifest.ambition}.\nActivez-le et prenez la décision "
+                                         "de liaison ; le client lit le journal du jeu (game.log).")
                 logging.getLogger("EU4").info("Mod installé : %s", path)
             except (OSError, ValueError, TypeError) as exc:
                 self.error(exc)

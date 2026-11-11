@@ -1,0 +1,20 @@
+eu4ap_fetter_colonial_0 = { colonists = -1 global_colonial_growth = -50 }
+eu4ap_fetter_colonial_1 = { global_colonial_growth = -25 }
+eu4ap_fetter_admiralty_0 = { naval_forcelimit_modifier = -0.5 }
+eu4ap_fetter_admiralty_1 = { naval_forcelimit_modifier = -0.25 }
+eu4ap_fetter_chancery_0 = { diplomats = -1 diplomatic_upkeep = -1 }
+eu4ap_fetter_chancery_1 = { diplomatic_upkeep = -1 }
+eu4ap_fetter_guilds_0 = { merchants = -1 trade_efficiency = -0.2 }
+eu4ap_fetter_guilds_1 = { trade_efficiency = -0.1 }
+eu4ap_fetter_academy_0 = { technology_cost = 0.3 }
+eu4ap_fetter_academy_1 = { technology_cost = 0.2 }
+eu4ap_fetter_academy_2 = { technology_cost = 0.1 }
+eu4ap_fetter_imperial_court_0 = { core_creation = 0.5 ae_impact = 0.5 }
+eu4ap_fetter_imperial_court_1 = { core_creation = 0.25 ae_impact = 0.25 }
+eu4ap_fetter_arsenal_0 = { land_forcelimit_modifier = -0.33 }
+eu4ap_fetter_arsenal_1 = { land_forcelimit_modifier = -0.15 }
+eu4ap_decree = { global_tax_modifier = 0.1 production_efficiency = 0.1 }
+eu4ap_court_patronage = { advisor_cost = -0.25 }
+eu4ap_missionary_zeal = { missionaries = 1 global_missionary_strength = 0.02 }
+eu4ap_diplomatic_incident = { ae_impact = 0.25 }
+eu4ap_unratified = { local_tax_modifier = -0.5 local_production_efficiency = -0.5 local_manpower_modifier = -0.5 local_unrest = 2 }

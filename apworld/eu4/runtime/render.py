@@ -59,26 +59,54 @@ def reward_script(m: Manifest, items: list[tuple]) -> str:
     return "\n".join(chunks)
 
 
-def install_mod(m: Manifest, user_dir: Path) -> Path:
+GENERATED_FILES = (
+    "common/scripted_effects/eu4ap_effects.txt", "common/scripted_effects/eu4ap_inbox.txt",
+    "common/scripted_effects/eu4ap_deliveries.txt", "customizable_localization/eu4ap_customizable_localization.txt",
+    "common/event_modifiers/eu4ap_modifiers.txt", "events/eu4ap_events.txt",
+    "decisions/eu4ap_decisions.txt", "localisation/eu4ap_l_english.yml", "localisation/eu4ap_l_french.yml",
+)
+INBOX = "common/scripted_effects/eu4ap_inbox.txt"
+
+
+def mod_root(user_dir: Path) -> Path:
+    return user_dir / "mod" / "eu4_archipelago"
+
+
+def sync_script(m: Manifest, items: list[tuple], deathlinks: int = 0) -> str:
+    """Console file for any schema (schema 2 in Ironman explains that it is unused)."""
+    if m.schema == 1:
+        return reward_script(m, items)
+    from .render_v2 import console_script
+    return console_script(m, items, deathlinks)
+
+
+def write_inbox(m: Manifest, user_dir: Path, items: list[tuple], deathlinks: int = 0) -> bool:
+    """Rewrite the schema-2 inbox. EU4 must be closed. Returns True if the file changed."""
+    from .render_v2 import inbox_text
+    root = mod_root(user_dir)
+    installed = root / "eu4ap_manifest.json"
+    if not installed.is_file() or Manifest.read(installed) != m:
+        raise ValueError("Le mod installé ne correspond pas à ce manifeste : réinstallez-le, EU4 fermé.")
+    text = inbox_text(m, items, deathlinks)
+    path = root / INBOX
+    if path.is_file() and path.read_text(encoding="utf-8") == text:
+        return False
+    atomic_text(path, text)
+    return True
+
+
+def install_mod(m: Manifest, user_dir: Path, items: list[tuple] = (), deathlinks: int = 0) -> Path:
     """Install only our generated files. Must run while EU4 is stopped."""
-    root = user_dir / "mod" / "eu4_archipelago"
+    if m.schema == 2:
+        return _install_v2(m, user_dir, items, deathlinks)
+    root = mod_root(user_dir)
     # Keep a recoverable copy before changing the active seed. Saves and client
     # progress are never part of this generated mod directory.
-    previous = root / "eu4ap_manifest.json"
-    if root.exists():
-        old = Manifest.read(previous) if previous.is_file() else None
-        if old != m:
-            stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
-            backup = user_dir / "eu4ap" / "mod-backups" / f"{old.token if old else 'unknown'}-{stamp}"
-            backup.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copytree(root, backup)
-    root.mkdir(parents=True, exist_ok=True)
-    descriptor = ('name="EU4 Archipelago"\n'
-                  f'version="{VERSION}"\nsupported_version="{EU4_VERSION}"\n'
-                  'tags={ "Gameplay" }\n')
-    atomic_text(root / "descriptor.mod", descriptor)
-    atomic_text(user_dir / "mod" / "eu4_archipelago.mod",
-                descriptor + f'path="{root.resolve().as_posix()}"\n')
+    _backup_previous(m, root, user_dir)
+    _descriptor(root, user_dir)
+    _remove_stale(root, ("common/scripted_effects/eu4ap_effects.txt", "events/eu4ap_events.txt",
+                         "decisions/eu4ap_decisions.txt", "localisation/eu4ap_l_english.yml",
+                         "localisation/eu4ap_l_french.yml"))
     atomic_text(root / "common/scripted_effects/eu4ap_effects.txt", scan_effect(m))
     daily_flag = f"eu4ap_{m.token}_daily_scan"
     start_daily = f"""if = {{
@@ -168,5 +196,46 @@ country_event = {{
  eu4ap_ratify_title:0 "§MArchipelago : ratifier les chartes royales§!"
  eu4ap_ratify_desc:0 "Accomplissez l'objectif du multiworld après avoir reçu toutes les chartes royales requises. Sauvegardez pour signaler la victoire."
 ''', encoding="utf-8-sig")
+    m.write(root / "eu4ap_manifest.json")
+    return root
+
+
+def _backup_previous(m: Manifest, root: Path, user_dir: Path) -> None:
+    previous = root / "eu4ap_manifest.json"
+    if root.exists():
+        old = Manifest.read(previous) if previous.is_file() else None
+        if old != m:
+            stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+            backup = user_dir / "eu4ap" / "mod-backups" / f"{old.token if old else 'unknown'}-{stamp}"
+            backup.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copytree(root, backup)
+
+
+def _descriptor(root: Path, user_dir: Path) -> None:
+    root.mkdir(parents=True, exist_ok=True)
+    descriptor = ('name="EU4 Archipelago"\n'
+                  f'version="{VERSION}"\nsupported_version="{EU4_VERSION}"\n'
+                  'tags={ "Gameplay" }\n')
+    atomic_text(root / "descriptor.mod", descriptor)
+    atomic_text(user_dir / "mod" / "eu4_archipelago.mod",
+                descriptor + f'path="{root.resolve().as_posix()}"\n')
+
+
+def _remove_stale(root: Path, kept: tuple[str, ...]) -> None:
+    """Delete generated files of another schema; user files are never touched."""
+    for relative in GENERATED_FILES:
+        if relative not in kept:
+            (root / relative).unlink(missing_ok=True)
+
+
+def _install_v2(m: Manifest, user_dir: Path, items, deathlinks: int) -> Path:
+    from .render_v2 import mod_files
+    root = mod_root(user_dir)
+    _backup_previous(m, root, user_dir)
+    _descriptor(root, user_dir)
+    files = mod_files(m, list(items), deathlinks)
+    _remove_stale(root, tuple(files))
+    for relative, (content, encoding) in files.items():
+        atomic_text(root / relative, content, encoding)
     m.write(root / "eu4ap_manifest.json")
     return root

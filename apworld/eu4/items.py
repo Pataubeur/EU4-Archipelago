@@ -1,6 +1,7 @@
 from BaseClasses import Item, ItemClassification
 
-from .runtime.data import GAME, ITEMS
+from .runtime.catalog import ITEM_DEFS
+from .runtime.data import GAME
 
 
 class EU4Item(Item):
@@ -8,5 +9,5 @@ class EU4Item(Item):
 
 
 def create_item(name: str, player: int) -> EU4Item:
-    code, _effect, _amount, classification = ITEMS[name]
-    return EU4Item(name, getattr(ItemClassification, classification), code, player)
+    item = ITEM_DEFS[name]
+    return EU4Item(name, getattr(ItemClassification, item.classification), item.id, player)

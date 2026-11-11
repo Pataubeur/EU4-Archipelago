@@ -2,8 +2,10 @@ from dataclasses import dataclass
 
 import random
 
-from Options import Choice, DefaultOnToggle, FreeText, PerGameCommonOptions, Range
+from Options import (Choice, DeathLink, DefaultOnToggle, FreeText, OptionSet, PerGameCommonOptions,
+                     Range, Toggle)
 
+from .runtime.catalog import AMBITIONS_LIST, DEFAULT_FETTERS, FETTERS, KNOWN_DLCS
 from .runtime.data import country_tag
 from .runtime.countries import (COUNTRY_NAMES, OTHER_COUNTRY, country_choice_id,
                                 country_choice_tag, country_label, named_country_tag)
@@ -74,8 +76,103 @@ class CustomStartingCountry(FreeText):
     default = "FRA"
 
 
+class SaveMode(Choice):
+    """How you will play EU4. Normal: received items arrive with the console command
+    `run eu4ap_sync.txt` or after relaunching EU4. Ironman: no console; items arrive
+    the day after you relaunch EU4 and load your campaign. Traps are disabled in
+    Ironman unless Ironman Traps is on. The mod also reports the actual mode."""
+    display_name = "Save Mode"
+    option_normal = 0
+    option_ironman = 1
+    default = 0
+
+
+class CampaignLength(Choice):
+    """Pacing: short ~4-6 h (calendar to 1500), standard ~8-12 h (to 1575),
+    long 20 h+ (to 1700). Sets checks, thresholds and the automatic ambition."""
+    display_name = "Campaign Length"
+    option_short = 0
+    option_standard = 1
+    option_long = 2
+    default = 1
+
+
+class Goal(Choice):
+    """Victory condition, ratified with an in-game decision.
+    royal_charters: the classic 0.4 mode (10-20 checks, Royal Charters only).
+    national_ambition: achieve your country's ambition (achievement-inspired).
+    great_power: be a great power with doubled development.
+    domination: multiply your starting development (x2/x3/x5 by length).
+    mixed: the ambition AND Seals of the Multiworld (recommended)."""
+    display_name = "Goal"
+    option_royal_charters = 0
+    option_national_ambition = 1
+    option_great_power = 2
+    option_domination = 3
+    option_mixed = 4
+    default = 4
+
+
+class NationalAmbition(Choice):
+    """auto picks the dedicated ambition of your country that fits the campaign
+    length and declared DLCs, else a generic one. An explicit choice must fit the
+    country, length and DLCs, or generation stops with an explanation."""
+    display_name = "National Ambition"
+    option_auto = 0
+    for _ambition in AMBITIONS_LIST:
+        locals()["option_" + _ambition.key] = _ambition.index + 1
+    default = 0
+
+
+class OwnedDLCs(OptionSet):
+    """DLCs ENABLED in your EU4 launcher. They select mission trees and DLC-only
+    ambitions. Declaring a DLC you do not run makes some checks impossible."""
+    display_name = "Owned DLCs"
+    valid_keys = frozenset(KNOWN_DLCS)
+    default = frozenset()
+
+
+class Fetters(OptionSet):
+    """Progressive handicaps applied at binding and lifted by items found in the
+    multiworld: colonial, admiralty, chancery, guilds, academy, imperial_court, arsenal."""
+    display_name = "Fetters"
+    valid_keys = frozenset(FETTERS)
+    default = frozenset(DEFAULT_FETTERS)
+
+
+class RegionKeys(DefaultOnToggle):
+    """Ambition regions need a key item: without it, newly owned provinces there
+    are 'unratified' (heavy penalties) and their checks stay locked."""
+    display_name = "Region Keys"
+
+
+class MissionChecks(DefaultOnToggle):
+    """Include the first missions of your country's tree (by declared DLCs)."""
+    display_name = "Mission Checks"
+
+
+class ExcludeLongChecks(DefaultOnToggle):
+    """Never place progression items on long or difficult checks, including the
+    last third of the calendar: other players would wait hours for them."""
+    display_name = "Exclude Long Checks"
+
+
+class TrapPercentage(Range):
+    """Percentage of filler replaced by mild traps (never fatal, not before 1450)."""
+    display_name = "Trap Percentage"
+    range_start = 0
+    range_end = 30
+    default = 0
+
+
+class IronmanTraps(Toggle):
+    """Allow traps in Ironman, where they arrive grouped after a relaunch."""
+    display_name = "Ironman Traps"
+
+
 class GoalDifficulty(Choice):
-    """Number of Royal Charters required: easy=2, normal=3, hard=4."""
+    """Number of Royal Charters (royal_charters goal) or Seals of the Multiworld
+    (mixed goal) required: easy=2, normal=3, hard=4."""
     display_name = "Goal Difficulty"
     option_easy = 2
     option_normal = 3
@@ -84,7 +181,7 @@ class GoalDifficulty(Choice):
 
 
 class LocationCount(Range):
-    """Number of objectives, including at least half calendar milestones."""
+    """royal_charters goal only: number of objectives, at least half calendar milestones."""
     display_name = "Location Count"
     range_start = 10
     range_end = 20
@@ -92,12 +189,12 @@ class LocationCount(Range):
 
 
 class EconomicChecks(DefaultOnToggle):
-    """Include treasury milestones. Loans can satisfy these checks."""
+    """royal_charters goal only: include treasury milestones. Loans can satisfy these checks."""
     display_name = "Economic Checks"
 
 
 class TechnologyChecks(DefaultOnToggle):
-    """Include technology levels 4 and 5, without DLC or geography requirements."""
+    """royal_charters goal only: include technology levels 4 and 5."""
     display_name = "Technology Checks"
 
 
@@ -113,11 +210,23 @@ class RewardStrength(Choice):
 class EU4Options(PerGameCommonOptions):
     starting_country: StartingCountry
     custom_starting_country: CustomStartingCountry
+    save_mode: SaveMode
+    campaign_length: CampaignLength
+    goal: Goal
+    national_ambition: NationalAmbition
     goal_difficulty: GoalDifficulty
     location_count: LocationCount
     enable_economic_checks: EconomicChecks
     enable_technology_checks: TechnologyChecks
     reward_strength: RewardStrength
+    owned_dlcs: OwnedDLCs
+    fetters: Fetters
+    region_keys: RegionKeys
+    mission_checks: MissionChecks
+    exclude_long_checks: ExcludeLongChecks
+    trap_percentage: TrapPercentage
+    ironman_traps: IronmanTraps
+    death_link: DeathLink
 
     @property
     def country_tag(self) -> str:

@@ -1,19 +1,21 @@
 # Europa Universalis IV × Archipelago
 
-Play an EU4 country in an Archipelago multiworld. Objectives in your save send
-checks; received items produce rewards applied through EU4's console.
+Play an EU4 country in an Archipelago multiworld: pursue an achievement-inspired
+national ambition while other players lift your fetters, unlock your regions and
+send Seals of the Multiworld. Normal and Ironman campaigns are supported by design.
 **EU4 Client is included in the Archipelago Launcher.** Players need neither
 this repository nor a separate Python installation.
 
-**0.4.1 is a release candidate.** Windows Archipelago 0.6.7 is the supported test
-target; EU4 1.37.5.0, non-Ironman, is the engine target. Packaging, synthetic-save
-synchronization and real AP generation can be checked automatically.
-**Live EU4 rewards, daily events and mixed-game play still need acceptance.**
+**0.5.0 is a release candidate.** Windows Archipelago 0.6.7 is the supported test
+target; EU4 1.37.5.0 (normal or Ironman) is the engine target. Packaging, synthetic
+synchronization and real AP generation are checked automatically.
+**No 0.5.0 mechanic has been validated in EU4 yet** (experiments E1–E8, notably
+whether an Ironman save reloads after the mod changes).
 Read the [validation report](docs/validation.md) before using an important campaign.
 
 ## Windows quick start
 
-1. Download and extract `eu4-player-kit-0.4.1.zip` supplied by the maintainer.
+1. Download and extract `eu4-player-kit-0.5.0.zip` supplied by the maintainer.
    Build scripts do not publish a release.
 2. Install [Archipelago 0.6.7](https://github.com/ArchipelagoMW/Archipelago/releases/tag/0.6.7).
    In its Launcher choose **Install APWorld**, select `eu4.apworld`, then fully
@@ -27,12 +29,14 @@ Read the [validation report](docs/validation.md) before using an important campa
    select it and your EU4 Documents user folder. With EU4 closed, click
    **Installer le mod**. The client creates the seed-specific mod.
 5. Enable the mod in an EU4 playset. Start the configured country on 1444-11-11
-   without Ironman. Take **Archipelago: bind this campaign** (or its French
-   translation), then save to a dedicated local text `.eu4` file.
-6. Select that save in the client, enter `hostname:port`, your YAML player name
-   and optional password, then connect. Leave the client open while playing.
-7. Save to send objectives. For rewards, pause, open EU4's console, enter
-   `run eu4ap_sync.txt`, then **save again** to acknowledge them.
+   in the mode of your YAML (`save_mode`). Take **Archipelago: bind this campaign**
+   (or its French translation).
+6. In the client enter `hostname:port`, your YAML player name and optional
+   password, then connect. Leave the client open while EU4 runs: it reads
+   `game.log` and sends checks as they happen. A save is optional (normal mode).
+7. Received items: the client shows a 4-digit code per item; take **Archipelago:
+   receive a delivery** in EU4 and enter it (live, also in Ironman). Rare items
+   without a code arrive at the next relaunch. Ratify the victory with its decision.
 
 | File | Purpose |
 | --- | --- |
@@ -51,7 +55,8 @@ For an unlisted country select **Other country (advanced tag)**, expand
 The list is a shortlist, not an exhaustive game catalogue. Generation checks
 the tag's syntax, not whether the country exists
 on the starting map. Select an existing playable country on **1444-11-11**.
-Other start dates and switching countries during a campaign remain unsupported.
+Other start dates remain unsupported. Forming a nation (Rome, Spain, Prussia…)
+keeps the campaign through its binding flag, pending in-game confirmation.
 
 [Player guide, updates and troubleshooting](docs/installation.md) ·
 [Gameplay](docs/gameplay.md) · [Known limits](docs/limitations.md) ·

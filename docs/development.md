@@ -30,7 +30,7 @@ The build produces in `dist/release/`:
 | `eu4.apworld` | Installable World and Launcher client, no extra runtime dependencies beyond AP |
 | `example.yaml` | Player configuration, not a seed manifest |
 | `RELEASE.json` | Release version, compatibility targets, candidate status and package hashes |
-| `eu4-player-kit-0.4.1.zip` | Package, YAML, metadata, license and documentation for players |
+| `eu4-player-kit-0.5.0.zip` | Package, YAML, metadata, license and documentation for players |
 | `SHA256SUMS` | SHA-256 of each file above, including the player ZIP |
 
 `python scripts/build_apworld.py --include-tools --include-demos` additionally
@@ -38,7 +38,33 @@ builds `dist/tools/eu4-client-source.zip` (requires Python) and
 `dist/demos/OFFLINE-ONLY-eu4-mod.zip` (cannot connect online), each with checksums.
 The demo is freshly rendered in a temporary directory; stale files from `mod/`
 are never silently packaged. `python scripts/prepare_poc.py` explicitly refreshes
-the reference `mod/` and `config/poc.apeu4.json` when developing native scripts.
+the reference `mod/` (schema 2, FRA, standard) and `config/poc-v2.apeu4.json` when
+developing native scripts. `config/poc.apeu4.json` stays a frozen schema-1 fixture
+whose token is checked by the tests.
+
+### Schema 2 sources and tools
+
+| File | Role |
+| --- | --- |
+| `runtime/catalog.py` | Single catalogue: locations, items, fetters, region keys, ambitions, guards |
+| `runtime/planner.py` | Pure slot planning (locations, item pool, exclusions) and static beatability check |
+| `runtime/render_v2.py` | Schema-2 mod: scan/promote/recompute/replay effects, inbox, decisions, localisation |
+| `runtime/game_log.py` | Incremental `game.log` reader (rotation, partial lines, foreign tokens) |
+| `runtime/process.py` | `eu4.exe` detection from the process list before touching the inbox |
+| `runtime/missions_1375.py` | Generated mission identifiers; regenerate, never renumber by hand |
+
+`python scripts/extract_missions.py --game-dir "<EU4 install>"` regenerates the
+mission catalogue from a local installation (identifiers only, existing IDs kept).
+`python scripts/feasibility_kit.py` installs the separate experiment mod for
+E1–E7 (see [manual-validation.md](manual-validation.md)). The CLI gained
+`poc-manifest --schema 2 --save-mode ironman --length short` and
+`stage-inbox` (write received items into the mod while EU4 is closed);
+`inspect`/`connect` take `--save` only for schema 1 or normal-mode checks.
+
+Tests `tests/test_progression.py` (catalogue, planning matrix, AP-logic/mod guard
+equality, script lint of every generated file) and `tests/test_ironman.py`
+(game.log, inbox staging, formation, DeathLink, Ironman session) are synthetic:
+they cannot establish EU4 behaviour.
 
 The builder uses fixed ZIP timestamps and sorted entries. Tests build twice,
 compare hashes, inspect contents, verify checksums, extract and launch the optional
@@ -59,7 +85,7 @@ emits `eu4/__init__.py`, relative World imports, bundled tutorial/runtime resour
 and a root `archipelago.json`. Source metadata stays in `eu4/archipelago.json`;
 container fields are added only during packaging, using container version 7 and
 compatibility 7 from [APWorldContainer](https://github.com/ArchipelagoMW/Archipelago/blob/0.6.7/worlds/Files.py).
-These container versions are separate from the World release version 0.4.1.
+These container versions are separate from the World release version 0.5.0.
 The official source Launcher also offers **Build APWorlds** for development;
 our builder reproduces the pinned container layout while adding release artifacts.
 

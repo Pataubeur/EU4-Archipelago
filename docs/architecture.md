@@ -100,3 +100,82 @@ The daily scanner uses event `eu4ap.2`. Legacy monthly `eu4ap.1` events queued
 in old saves are retained as a one-time migration entry. A seed-specific flag
 prevents repeated rescan decisions or legacy events from starting extra daily
 chains. Using rescan after upgrade starts the daily chain immediately.
+
+## Schema 2 (0.5.0): ambitions, fetters and Ironman channels
+
+Classic `royal_charters` seeds keep everything above (schema 1). Other goals
+produce schema-2 manifests; the single catalogue `runtime/catalog.py` feeds the
+World, the AP rules, the rendered mod and the client, so a guard cannot differ
+between logic and game. `runtime/planner.py` plans a slot without importing AP.
+
+```mermaid
+flowchart LR
+    AP[AP server] <-->|CommonContext| C[EU4 client]
+    L[logs/game.log] -->|read only, incremental| C
+    S[optional text save] -->|read only, normal mode| C
+    C -->|EU4 closed only| I[mod inbox eu4ap_inbox.txt]
+    C -->|normal mode| F[eu4ap_sync.txt console file]
+    I -->|daily event| G[EU4 native effects]
+    F -->|run command| G
+    G -->|log effect| L
+```
+
+| Entity | Evidence | State |
+| --- | --- | --- |
+| Item received | AP ReceivedItems | `received` |
+| Item in console file | atomic write (normal mode) | `pending` |
+| Item in installed inbox | atomic write while `eu4.exe` is absent | `staged` |
+| Item applied | `EU4AP <token> ITEM <index>` in game.log | `applied` |
+| Item in a save | index flag in a bound text save | `confirmed` |
+| Check | `CHECK <id>` in game.log or check flag in a save | local check, retried until acknowledged |
+| Goal | `GOAL` in game.log or goal + ambition flags in a save | StatusUpdate 30 |
+
+Native flags: `done_<id>` (objective reached once, never lost) is separate from
+`check_<id>` (reached **and** guard levels held). Fetter, key and seal levels are
+flags `lvl_<family>_<n>`; `eu4ap_recompute` rebuilds fetter modifiers from them
+daily, which makes delivery idempotent and repairs a crash. The inbox keeps every
+received item with its index flag; a game reloaded from an older autosave
+re-applies missing items exactly once.
+
+The daily event applies the inbox, recomputes fetters and promotes guarded checks;
+the full scan runs weekly (cost to be measured, E8), a `TICK` line monthly, and a
+`STATE` replay (HELLO with the detected mode, every check, item and goal) yearly
+and on the rescan decision, because EU4 truncates game.log at every launch.
+
+Formation: with schema 2 the bridge selects the country carrying the binding
+flag, so a formed tag (ROM, SPA, PRU…) remains the campaign; two carriers are
+refused. Schema 1 keeps rejecting tag changes.
+
+Rollback: normal-mode saves keep the blocking checks, but compare saves with
+saves (checks learned from the log never count as a save rollback). In Ironman
+a game year moving back more than one year is reported, not blocked: AP checks
+are monotonic and missing items repair themselves.
+
+DeathLink: a ruler without the ruler flag `eu4ap_known_ruler` logs `DEATH`; the
+client sends it once per log line (deduplicated across restarts). Received deaths
+are numbered inbox entries; a 30-day cooldown flag prevents loops.
+
+### Live deliveries (no relaunch, Ironman included)
+
+EU4 reads mod files only at launch and Ironman disables the console, so no file
+can feed it live. Instead, after fill, `EU4World.final_manifest()` lists every
+item the slot will receive — `(code, item, sender slot, location)` from filled
+locations plus start inventory — with random unique 4-digit codes drawn from a
+seed taken in `generate_early`, and 20 DeathLink codes when enabled. Slot data
+and the `.apeu4.json` carry this final manifest; the mod rendered from it never
+changes during the campaign, so its checksum stays constant.
+
+In game, the decision *receive a delivery* opens events `eu4ap.20`–`23` (one
+digit each, building the variable `eu4ap_code`) and `eu4ap.24`, whose text shows
+the item through `customizable_localization` (`GetEU4APDelivery`, the vanilla
+equality idiom `check_variable N` + `NOT check_variable N+1`). Accepting runs
+`eu4ap_claim`: already-claimed → `CLAIM_DUPLICATE`; trap before 1450 →
+`CLAIM_EARLY`; unknown → `CLAIM_UNKNOWN`; otherwise the effect, the flag
+`dlv_<code>` and `CLAIM <code>`.
+
+`runtime/deliveries.py` matches received items to codes: by (sender, location),
+then by item ID for negative locations (start inventory, server items). The
+client marks a claimed item `applied`, lists unclaimed codes, remembers a claim
+made before reception and honours it when the item arrives, and reports it
+meanwhile. Inbox and console blocks of coded items are guarded by the same
+`dlv_<code>` flag, so the three paths (claim, console, relaunch) apply an item once.

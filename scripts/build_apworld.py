@@ -74,13 +74,12 @@ def build_tools(output: Path) -> list[Path]:
 def build_demo(output: Path) -> list[Path]:
     # Render from source rather than packaging potentially stale checked-in PoC.
     import tempfile
-    from runtime.data import select_objectives
-    from runtime.manifest import Manifest
+    from runtime.main import offline_manifest
     from runtime.render import atomic_text, install_mod
     artifacts = [output / "OFFLINE-ONLY-eu4-mod.zip"]
     with tempfile.TemporaryDirectory() as directory:
         root = Path(directory)
-        manifest = Manifest("OFFLINE-POC", 1, 0, "FRA", tuple(o.id for o in select_objectives(12, True, True)))
+        manifest = offline_manifest("FRA", 2, "normal", "standard")
         mod = install_mod(manifest, root)
         descriptor = (mod / "descriptor.mod").read_text(encoding="utf-8")
         atomic_text(root / "mod/eu4_archipelago.mod", descriptor + 'path="mod/eu4_archipelago"\n')

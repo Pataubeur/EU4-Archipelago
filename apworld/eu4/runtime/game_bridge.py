@@ -29,7 +29,9 @@ def _tokens(text: str):
             yield value
 
 
-def parse_save(raw: bytes, country: str) -> Snapshot:
+def parse_save(raw: bytes, country: str, binding: str | None = None) -> Snapshot:
+    """Parse date, player and flags. With ``binding`` (schema 2), the bound country is
+    the one carrying that flag, so a formed nation (new tag) is followed."""
     if len(raw) > MAX_SAVE:
         raise SaveError("Save exceeds size limit")
     if raw.startswith(b"PK"):
@@ -42,15 +44,16 @@ def parse_save(raw: bytes, country: str) -> Snapshot:
         except (KeyError, zipfile.BadZipFile, RuntimeError) as exc:
             raise SaveError("Invalid compressed save") from exc
     if not raw.startswith(b"EU4txt"):
-        raise SaveError("Expected EU4txt; binary/Ironman saves are unsupported")
+        raise SaveError("Expected EU4txt: binary saves (Ironman, or compressed in EU4 1.37) cannot be read. "
+                        "Save uncompressed outside Ironman; Ironman campaigns use game.log instead")
     text = raw.decode("cp1252")
     stack: list[str] = []
     key: str | None = None
     assignment = False
-    flags: set[str] = set()
+    flags: dict[str, set[str]] = {}
+    seen: set[str] = set()
     date = None
     player = None
-    found = False
     for token in _tokens(text[6:]):
         if token == "=":
             if key is None or assignment:
@@ -60,8 +63,8 @@ def parse_save(raw: bytes, country: str) -> Snapshot:
             if len(stack) >= 256:
                 raise SaveError("Save nesting exceeds limit")
             stack.append(key if assignment and key else "[]")
-            if stack == ["countries", country]:
-                found = True
+            if len(stack) == 2 and stack[0] == "countries":
+                seen.add(stack[1])
             key, assignment = None, False
         elif token == "}":
             if not stack or assignment:
@@ -80,19 +83,27 @@ def parse_save(raw: bytes, country: str) -> Snapshot:
                     raise SaveError("Invalid save date") from exc
             elif not stack and key == "player":
                 player = value
-            elif stack == ["countries", country, "flags"] and key:
-                flags.add(key)
+            elif len(stack) == 3 and stack[0] == "countries" and stack[2] == "flags" and key:
+                if stack[1] == country or key.startswith("eu4ap"):
+                    flags.setdefault(stack[1], set()).add(key)
             key, assignment = None, False
         else:
             key = token.strip('"')
-    if stack or assignment or date is None or not found:
+    chosen = country
+    if binding:
+        holders = sorted(tag for tag, values in flags.items() if binding in values)
+        if len(holders) > 1:
+            raise SaveError(f"Several countries carry this campaign's binding: {holders}")
+        if holders:
+            chosen = holders[0]
+    if stack or assignment or date is None or chosen not in seen:
         raise SaveError("Incomplete save or selected country missing")
-    if player != country:
-        raise SaveError(f"Save player {player!r} differs from selected country {country}")
-    return Snapshot(date, country, frozenset(flags))
+    if player != chosen:
+        raise SaveError(f"Save player {player!r} differs from the bound country {chosen}")
+    return Snapshot(date, chosen, frozenset(flags.get(chosen, ())))
 
 
-def read_snapshot(path: Path, country: str) -> Snapshot:
+def read_snapshot(path: Path, country: str, binding: str | None = None) -> Snapshot:
     before = path.stat()
     if before.st_size > MAX_SAVE:
         raise SaveError("Save exceeds size limit")
@@ -100,4 +111,4 @@ def read_snapshot(path: Path, country: str) -> Snapshot:
     after = path.stat()
     if (before.st_size, before.st_mtime_ns) != (after.st_size, after.st_mtime_ns):
         raise SaveError("Save changed while reading; retry after writer finishes")
-    return parse_save(raw, country)
+    return parse_save(raw, country, binding)

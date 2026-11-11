@@ -4,34 +4,39 @@ country_decisions = {
         allow = { started_in = 1444.11.11 }
         effect = {
             set_country_flag = eu4ap_bound
-            set_country_flag = eu4ap_seed_07502effa99c7120fb38d675
+            set_country_flag = eu4ap_seed_bbea7eaca3803472b3732276
+            eu4ap_setup = yes
+            if = { limit = { ironman = yes } log = "EU4AP bbea7eaca3803472b3732276 HELLO 2 ironman" } else = { log = "EU4AP bbea7eaca3803472b3732276 HELLO 2 normal" }
             eu4ap_scan = yes
-            if = {
-                limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan } }
-                set_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan
-                country_event = { id = eu4ap.2 days = 1 }
-            }
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_daily_scan } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_daily_scan country_event = { id = eu4ap.2 days = 1 } }
         }
         ai_will_do = { factor = 0 }
     }
     eu4ap_rescan = {
-        potential = { ai = no has_country_flag = eu4ap_seed_07502effa99c7120fb38d675 }
+        potential = { ai = no has_country_flag = eu4ap_seed_bbea7eaca3803472b3732276 }
         allow = { always = yes }
         effect = {
+            eu4ap_inbox = yes
+            eu4ap_recompute = yes
             eu4ap_scan = yes
-            if = {
-                limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan } }
-                set_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan
-                country_event = { id = eu4ap.2 days = 1 }
-            }
+            eu4ap_replay = yes
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_daily_scan } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_daily_scan country_event = { id = eu4ap.2 days = 1 } }
         }
         ai_will_do = { factor = 0 }
     }
+    eu4ap_claim_delivery = {
+        potential = { ai = no has_country_flag = eu4ap_seed_bbea7eaca3803472b3732276 }
+        allow = { always = yes }
+        effect = { country_event = { id = eu4ap.20 } }
+        ai_will_do = { factor = 0 }
+    }
     eu4ap_ratify = {
-        potential = { ai = no has_country_flag = eu4ap_seed_07502effa99c7120fb38d675
-            NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_goal } }
-        allow = { has_country_flag = eu4ap_07502effa99c7120fb38d675_charter_0 has_country_flag = eu4ap_07502effa99c7120fb38d675_charter_1 has_country_flag = eu4ap_07502effa99c7120fb38d675_charter_2 }
-        effect = { set_country_flag = eu4ap_07502effa99c7120fb38d675_goal }
+        potential = { ai = no has_country_flag = eu4ap_seed_bbea7eaca3803472b3732276 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_goal } }
+        allow = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_ambition has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_1 has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_3 }
+        effect = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_goal
+            log = "EU4AP bbea7eaca3803472b3732276 GOAL"
+        }
         ai_will_do = { factor = 0 }
     }
 }

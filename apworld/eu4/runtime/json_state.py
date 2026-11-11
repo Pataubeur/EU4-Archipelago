@@ -8,6 +8,8 @@ from pathlib import Path
 from .persistence import ItemGapError
 from .render import atomic_text
 
+STATUSES = ("received", "pending", "staged", "applied", "confirmed")
+
 
 class JsonState:
     def __init__(self, path: Path, token: str) -> None:
@@ -27,7 +29,7 @@ class JsonState:
             for index, row in enumerate(data["items"]):
                 if (not isinstance(row, list) or len(row) != 6 or row[0] != index
                         or not all(type(v) is int for v in row[:5])
-                        or row[-1] not in ("received", "pending", "confirmed")):
+                        or row[-1] not in STATUSES):
                     raise ValueError("Invalid campaign item state")
             if any(not k.isdecimal() or type(v) is not bool for k, v in data["checks"].items()):
                 raise ValueError("Invalid campaign check state")
@@ -105,6 +107,20 @@ class JsonState:
             for row in data["items"]:
                 if row[-1] == "received":
                     row[-1] = "pending"
+        self._change(change)
+
+    def mark_staged(self, indices: set[int]) -> None:
+        def change(data):
+            for row in data["items"]:
+                if row[0] in indices and row[-1] in ("received", "pending"):
+                    row[-1] = "staged"
+        self._change(change)
+
+    def mark_applied(self, indices: set[int]) -> None:
+        def change(data):
+            for row in data["items"]:
+                if row[0] in indices and row[-1] != "confirmed":
+                    row[-1] = "applied"
         self._change(change)
 
     def close(self) -> None:

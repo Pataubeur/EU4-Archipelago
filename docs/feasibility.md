@@ -43,7 +43,7 @@ historical comparison, but its current RCON solution cannot be transplanted to E
 | --- | --- | --- | --- |
 | Read plaintext saves | Implemented parser; real save validation pending | Save interval + 2 s polling | Country flags are the authority; read stable complete files only |
 | Read zipped plaintext saves | Implemented `gamestate` reader | Same | Bounded decompression; reject binary/Ironman saves |
-| Tail `game.log` via native `log` | Plausible, deferred | Immediate | Rotation, replay and unsaved state complicate confirmation |
+| Tail `game.log` via native `log` | Selected for Ironman (design 2026-11-11); in-game test E1 pending | Immediate | File overwritten each launch: periodic `STATE` replay; see design-progression.md |
 | Generate mod before launch | Implemented seed-specific installer | Restart EU4 | No assumption of mod hot reload |
 | Modify loaded events/decisions | Unverified; not used | Unknown | Engine caching must be tested, cannot promise hot reload |
 | Console `run` effects file | Selected inbound candidate | User executes command | Per-item flags prevent replay in the same save lineage |

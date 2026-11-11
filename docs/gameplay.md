@@ -1,71 +1,118 @@
-# Gameplay and supported configuration
+# Gameplay and supported configuration (0.5.0)
 
-Choose any country playable on **1444-11-11**, using its EU4 tag in
-`starting_country` (e.g. `fra`, `byz`, `mng`, `azt`). Select that country manually
-in EU4. The existing FRA/CAS/ENG/POR/HAB/BRA/POL/TUR shortcuts and their numeric
-values remain valid; arbitrary tags are also accepted and normalized to uppercase.
-Options Creator shows a real dropdown with 58 alphabetical named shortcuts and
-France selected by default. For a country outside that shortlist, choose
-**Other country (advanced tag)** and set `custom_starting_country` under
-**Other country (advanced)**. That field is ignored for named selections.
-`random` draws from the 58 named countries, never the advanced entry.
-Listed English names and display labels are also accepted in YAML, e.g. `Ming`
-or `Byzantium (BYZ)`; arbitrary tags continue to work without the advanced field.
+Design rationale and the full catalogue are in [design-progression.md](design-progression.md).
+Every native effect below is an **implemented candidate awaiting EU4 validation**
+(experiments E1–E8 and the 0.5.0 protocol in [manual-validation.md](manual-validation.md)).
 
-The generator validates tag syntax, not availability on the map: select a country
-that is actually playable in the fixed 1444 start. No game files are required
-for generation. No exhaustive country catalogue or starting-development tables
-are bundled. Other start dates, custom nations and country formation/tag switching
-remain outside the supported scope; a changed player tag is rejected by the bridge.
-Opening tag selection does not establish that every country's engine behavior
-or balance has been tested.
+## Choosing a country
 
-All locations are logically accessible without received items. You still need
-to keep your country alive; AP's solver cannot guarantee survival in EU4.
-Calendar checks unlock by reaching successive years, starting in 1445. At least
-half the selected checks use this pool. Depending on options, treasury checks
-(100/250/500/1000 ducats) and ADM/DIP/MIL levels 4–5 replace some annual checks.
-Technology checks are taken in a fixed documented order after treasury checks,
-up to half the pool. Both groups off yields only annual checks (up to 1464).
-Dates are current-game-date thresholds, not campaign elapsed-time calculations.
-Some treasury checks can be obtained immediately by large countries or through
-loans. This is permitted in the MVP and is a balance limitation.
-The same thresholds apply to all countries; small or low-technology starts may
-take longer. Disable economic and/or technology checks for a calendar-only pool
-when those objectives would be unsuitable. AP logic still does not model survival.
+Choose any country playable on **1444-11-11** with `starting_country` (tag such as
+`fra`, `byz`, `mng`, or a listed name such as `Ming`). Options Creator shows 58
+named shortcuts; **Other country (advanced tag)** plus `custom_starting_country`
+covers any other tag. Generation validates tag syntax, not map availability.
 
-Take the binding decision once, then save. The hidden event scans every game day;
-use the rescan decision and save for immediate reporting. Checks are automatic
-after the client reads a save, not at the instant an unsaved objective occurs.
-The online client checks file metadata every 250 ms and parses only changed
-saves. Reading a large save and server latency still take time. After upgrading
-an existing campaign from monthly scanning, take the rescan decision once to
-start the daily event chain immediately; no new campaign or binding is needed.
+## Goals
 
-Royal Charters are progression items. Collect 2/3/4 depending on difficulty,
-apply them via the console, and take the ratification decision. Save to report
-completion. Extra charters from common AP options have no further gameplay effect.
-No locations depend on charters, so there is no charter-to-location cycle.
+| `goal` | Victory decision requires |
+| --- | --- |
+| `mixed` (default) | the national ambition **and** N Seals of the Multiworld (`goal_difficulty`: 2/3/4) |
+| `national_ambition` | the national ambition and its region keys / fetter levels |
+| `great_power` | great power status with doubled development, Chancery 1 |
+| `domination` | development ×2 (short), ×3 (standard) or ×5 (long) of your start, Imperial Court 2 |
+| `royal_charters` | the classic 0.4 mode: 10–20 checks, Royal Charters only, unchanged schema 1 |
 
-Other items are useful monarch power and filler ducats/prestige. Resources use
-ordinary native effects. Strength `double` multiplies resource amounts by two;
-item names retain baseline amounts. Existing game caps can waste prestige or
-monarch power. These effects are implemented candidates awaiting real-game
-verification; no discipline, colonization, legitimacy or permanent modifier
-reward is advertised as implemented.
+`national_ambition: auto` picks the country's dedicated ambition that fits the
+campaign length and declared DLCs (e.g. BYZ standard → *Basileus*, BYZ long →
+*Pentarchy*, FRA long → *Better than Napoleon*, POR short → *The Navigator*),
+otherwise a generic one (*Regional Power*, *Great Power*, *At Every Continent*).
+An explicit ambition that does not fit the country, length or DLCs stops
+generation with an explanation. Ambitions are rewritten achievement conditions;
+Steam achievements are never read. Once reached, an ambition stays reached.
+Dated achievements lose their deadline (AP cannot guarantee game time); the
+deadline survives as an always-excluded bonus check (*The Navigator: Before 1500*).
 
-| YAML option | Supported values | Meaning |
+## Campaign length and checks
+
+| `campaign_length` | Calendar | Checks (typical) | Estimated time |
+| --- | --- | --- | --- |
+| `short` | every 5 years, 1450–1500 | 29–39 | 4–6 h |
+| `standard` | 1450–1575 | 61–78 | 8–12 h |
+| `long` | 1450–1700 | 94–115 | 20 h+ |
+
+Besides calendar checks: institutions, idea groups, empire rank, absolutism,
+development **relative to your start** (+25 %, +50 %, ×2, ×3), cities of 30/50
+development, allies, royal marriages, subjects, personal union, army tradition,
+discipline, navy size, monthly income, trade share, debt-free reserves (loans no
+longer validate treasury checks), discovering the New World, colonies, colonial
+nations, continents, religious unity, prestige, stability, the first missions of
+your country's tree (`mission_checks`, chosen by `owned_dlcs`), and the ambition's
+milestones (priority locations).
+
+`exclude_long_checks` (on by default) keeps progression items off long checks and
+the last third of the calendar, where other players would wait hours.
+
+## What the multiworld unlocks in your campaign
+
+- **Fetters** (`fetters`, default colonial, admiralty, chancery, guilds; also
+  academy, imperial_court, arsenal): permanent modifiers applied at binding and
+  lifted level by level by *Progressive …* items. Example: Colonial License level
+  0 is −1 colonist and −50 colonial growth. Their checks also require the level.
+- **Region keys** (`region_keys`, on): each ambition region (Balkans, Anatolia,
+  Mashriq, Egypt, Italy, …) needs its key. Without it, newly owned provinces
+  there receive *Archipelago: Unratified Land* (−50 % taxes, production and
+  manpower, +2 unrest) and its milestones stay locked. Provinces owned when you
+  bind are never penalised.
+- **Seals of the Multiworld**: required by the `mixed` victory.
+- **Useful items**: Multiworld Decree (10-year modifier), Military Tradition,
+  Fresh Recruits, Court Patronage, Peace Dividend, Missionary Zeal, monarch power,
+  Ambition Claims (permanent claims on your ambition targets).
+- **Filler**: Royal Treasury (0.25 year of income), Mandate of Legitimacy
+  (or republican tradition/devotion), prestige. `reward_strength: double` doubles them.
+- **Traps** (`trap_percentage`, default 0): stability, a small revolt, a
+  diplomatic incident, inflation, an heir's death. Never before 1450, never
+  fatal, and disabled in Ironman unless `ironman_traps`.
+- **DeathLink** (`death_link`): a received death costs 1 stability (not below −2)
+  and 10 prestige; your ruler changing sends one, with a 30-day loop guard.
+
+## Normal and Ironman play
+
+| | `save_mode: normal` | `save_mode: ironman` |
 | --- | --- | --- |
-| starting_country | Any EU4 tag, e.g. fra/byz/mng/azt | Country playable on 1444-11-11; case-insensitive |
-| custom_starting_country | A tag, default FRA | Used only when starting_country is other_country |
-| goal_difficulty | easy/normal/hard | 2/3/4 Royal Charters |
-| location_count | 10–20 | Pool size |
-| enable_economic_checks | true/false | Treasury pool |
-| enable_technology_checks | true/false | Technology pool |
-| reward_strength | normal/double | Resource effect multiplier |
+| Checks sent | from `game.log` as they happen; saves add rollback detection | from `game.log` |
+| Items received, live | delivery code entered in game | delivery code entered in game |
+| Items received, other paths | console `run eu4ap_sync.txt`, or relaunch EU4 | relaunch EU4: applied the day after loading |
+| Save in the client | optional (uncompressed text) | not used |
 
-`starting_date` and `goal` are deliberately fixed, not inert YAML options.
-Military/diplomatic/colonial checks and `progression_difficulty` are not yet
-implemented and must not be added to the example YAML. More options should be
-introduced only with matching game behavior and logic tests. Common AP options
-come from PerGameCommonOptions. The example leaves accessibility at AP's default.
+**Live deliveries.** At generation every item you will receive gets a 4-digit
+code, written into the mod once (the mod never changes during the campaign).
+When an item arrives, the client shows « Livraison reçue de Alice : Key: Anatolia
+— code 4821 ». In EU4, even paused, take **Archipelago: receive a delivery**, pick
+the four digits, check the item name on the confirmation screen and accept: the
+effect applies at once. A code already received, unknown, or a trap before 1450
+is refused with a log line. The game cannot know whether the server really sent
+the item (honour system): the client audits every claim and reports a code
+claimed before reception. Items without a code (an admin `/send`) and DeathLinks
+beyond the 20 reserved codes arrive at the next relaunch. Both paths share the
+same flag, so an item is never applied twice.
+
+The mod also logs the actual mode; the client warns if it differs. The client
+installs items into the mod's inbox only while EU4 is closed, as a safety net.
+After a crash before the autosave, missing items are re-applied once automatically.
+
+## Decisions
+
+- **Archipelago: bind this campaign** — once, as the configured country on 1444-11-11.
+- **Archipelago: receive a delivery** — digit pad for the codes shown by the client.
+- **Archipelago: scan objectives now** — applies installed items, scans, replays state into the log.
+- **Archipelago: ratify the victory** — available when the goal requirements are met.
+- **Archipelago: golden pilgrimage** — Mali's ambition only.
+
+A visible event announces deliveries. Purple *Archipelago* modifiers show the
+remaining fetters and unratified provinces.
+
+## Not modelled
+
+AP logic mirrors the mod's guards exactly but does not model the survival or
+military strength of your country, nor game time: a check reachable in logic can
+remain hard in EU4. Formed nations (Rome, Spain, Prussia, …) keep the campaign
+through the binding flag (to be confirmed in game, E4).

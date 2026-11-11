@@ -1,5 +1,4 @@
 namespace = eu4ap
-# Legacy monthly events queued in existing saves start the daily chain once.
 country_event = {
     id = eu4ap.1
     title = none
@@ -7,19 +6,10 @@ country_event = {
     picture = none
     hidden = yes
     is_triggered_only = yes
-    immediate = {
-        if = {
-            limit = { ai = no has_country_flag = eu4ap_seed_07502effa99c7120fb38d675 }
-            eu4ap_scan = yes
-            if = {
-                limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan } }
-                set_country_flag = eu4ap_07502effa99c7120fb38d675_daily_scan
-                country_event = { id = eu4ap.2 days = 1 }
-            }
-        }
-    }
+    immediate = { if = { limit = { ai = no has_country_flag = eu4ap_seed_bbea7eaca3803472b3732276 } if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_daily_scan } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_daily_scan country_event = { id = eu4ap.2 days = 1 } } } }
     option = { }
 }
+# Daily chain: inbox, fetters, guarded checks; weekly scan; monthly tick; yearly replay.
 country_event = {
     id = eu4ap.2
     title = none
@@ -29,10 +19,102 @@ country_event = {
     is_triggered_only = yes
     immediate = {
         if = {
-            limit = { ai = no has_country_flag = eu4ap_seed_07502effa99c7120fb38d675 }
-            eu4ap_scan = yes
+            limit = { ai = no has_country_flag = eu4ap_seed_bbea7eaca3803472b3732276 }
+            eu4ap_daily = yes
             country_event = { id = eu4ap.2 days = 1 }
         }
     }
     option = { }
+}
+# Visible summary when deliveries from the multiworld have been applied.
+country_event = {
+    id = eu4ap.3
+    title = eu4ap.3.t
+    desc = eu4ap.3.d
+    picture = DIPLOMACY_eventPicture
+    is_triggered_only = yes
+    option = { name = eu4ap.3.a }
+}
+# Digit pad: the player enters the 4-digit code shown by the client.
+country_event = {
+    id = eu4ap.20
+    title = eu4ap.20.t
+    desc = eu4ap.20.d
+    picture = DIPLOMACY_eventPicture
+    is_triggered_only = yes
+    option = { name = eu4ap.digit.0 set_variable = { which = eu4ap_code value = 0 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.digit.1 set_variable = { which = eu4ap_code value = 1000 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.digit.2 set_variable = { which = eu4ap_code value = 2000 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.digit.3 set_variable = { which = eu4ap_code value = 3000 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.digit.4 set_variable = { which = eu4ap_code value = 4000 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.digit.5 set_variable = { which = eu4ap_code value = 5000 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.digit.6 set_variable = { which = eu4ap_code value = 6000 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.digit.7 set_variable = { which = eu4ap_code value = 7000 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.digit.8 set_variable = { which = eu4ap_code value = 8000 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.digit.9 set_variable = { which = eu4ap_code value = 9000 } country_event = { id = eu4ap.21 } }
+    option = { name = eu4ap.claim.cancel }
+}
+country_event = {
+    id = eu4ap.21
+    title = eu4ap.21.t
+    desc = eu4ap.21.d
+    picture = DIPLOMACY_eventPicture
+    is_triggered_only = yes
+    option = { name = eu4ap.digit.0 change_variable = { which = eu4ap_code value = 0 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.digit.1 change_variable = { which = eu4ap_code value = 100 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.digit.2 change_variable = { which = eu4ap_code value = 200 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.digit.3 change_variable = { which = eu4ap_code value = 300 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.digit.4 change_variable = { which = eu4ap_code value = 400 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.digit.5 change_variable = { which = eu4ap_code value = 500 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.digit.6 change_variable = { which = eu4ap_code value = 600 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.digit.7 change_variable = { which = eu4ap_code value = 700 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.digit.8 change_variable = { which = eu4ap_code value = 800 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.digit.9 change_variable = { which = eu4ap_code value = 900 } country_event = { id = eu4ap.22 } }
+    option = { name = eu4ap.claim.cancel }
+}
+country_event = {
+    id = eu4ap.22
+    title = eu4ap.22.t
+    desc = eu4ap.22.d
+    picture = DIPLOMACY_eventPicture
+    is_triggered_only = yes
+    option = { name = eu4ap.digit.0 change_variable = { which = eu4ap_code value = 0 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.digit.1 change_variable = { which = eu4ap_code value = 10 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.digit.2 change_variable = { which = eu4ap_code value = 20 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.digit.3 change_variable = { which = eu4ap_code value = 30 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.digit.4 change_variable = { which = eu4ap_code value = 40 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.digit.5 change_variable = { which = eu4ap_code value = 50 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.digit.6 change_variable = { which = eu4ap_code value = 60 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.digit.7 change_variable = { which = eu4ap_code value = 70 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.digit.8 change_variable = { which = eu4ap_code value = 80 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.digit.9 change_variable = { which = eu4ap_code value = 90 } country_event = { id = eu4ap.23 } }
+    option = { name = eu4ap.claim.cancel }
+}
+country_event = {
+    id = eu4ap.23
+    title = eu4ap.23.t
+    desc = eu4ap.23.d
+    picture = DIPLOMACY_eventPicture
+    is_triggered_only = yes
+    option = { name = eu4ap.digit.0 change_variable = { which = eu4ap_code value = 0 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.digit.1 change_variable = { which = eu4ap_code value = 1 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.digit.2 change_variable = { which = eu4ap_code value = 2 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.digit.3 change_variable = { which = eu4ap_code value = 3 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.digit.4 change_variable = { which = eu4ap_code value = 4 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.digit.5 change_variable = { which = eu4ap_code value = 5 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.digit.6 change_variable = { which = eu4ap_code value = 6 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.digit.7 change_variable = { which = eu4ap_code value = 7 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.digit.8 change_variable = { which = eu4ap_code value = 8 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.digit.9 change_variable = { which = eu4ap_code value = 9 } country_event = { id = eu4ap.24 } }
+    option = { name = eu4ap.claim.cancel }
+}
+country_event = {
+    id = eu4ap.24
+    title = eu4ap.24.t
+    desc = eu4ap.24.d
+    picture = DIPLOMACY_eventPicture
+    is_triggered_only = yes
+    option = { name = eu4ap.24.a eu4ap_claim = yes }
+    option = { name = eu4ap.24.b country_event = { id = eu4ap.20 } }
+    option = { name = eu4ap.claim.cancel }
 }

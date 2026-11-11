@@ -1,50 +1,303 @@
+# Seed bbea7eaca3803472b3732276: generated, do not edit.
+eu4ap_setup = {
+    export_to_variable = { which = eu4ap_dev_start value = total_development }
+    set_variable = { which = eu4ap_dev_125 which = eu4ap_dev_start }
+    multiply_variable = { which = eu4ap_dev_125 value = 1.25 }
+    set_variable = { which = eu4ap_dev_150 which = eu4ap_dev_start }
+    multiply_variable = { which = eu4ap_dev_150 value = 1.5 }
+    set_variable = { which = eu4ap_dev_200 which = eu4ap_dev_start }
+    multiply_variable = { which = eu4ap_dev_200 value = 2 }
+    set_variable = { which = eu4ap_dev_300 which = eu4ap_dev_start }
+    multiply_variable = { which = eu4ap_dev_300 value = 3 }
+    set_variable = { which = eu4ap_dev_500 which = eu4ap_dev_start }
+    multiply_variable = { which = eu4ap_dev_500 value = 5 }
+    every_owned_province = { set_province_flag = eu4ap_heartland }
+    set_variable = { which = eu4ap_scan_days value = 7 }
+    set_variable = { which = eu4ap_tick_days value = 30 }
+    set_variable = { which = eu4ap_replay_days value = 365 }
+    eu4ap_recompute = yes
+}
+
+eu4ap_daily = {
+    eu4ap_inbox = yes
+    eu4ap_recompute = yes
+    eu4ap_promote = yes
+    change_variable = { which = eu4ap_scan_days value = 1 }
+    if = { limit = { check_variable = { which = eu4ap_scan_days value = 7 } }
+        set_variable = { which = eu4ap_scan_days value = 0 }
+        eu4ap_scan = yes
+    }
+    change_variable = { which = eu4ap_tick_days value = 1 }
+    if = { limit = { check_variable = { which = eu4ap_tick_days value = 30 } }
+        set_variable = { which = eu4ap_tick_days value = 0 }
+        log = "EU4AP bbea7eaca3803472b3732276 TICK [GetYear]"
+    }
+    change_variable = { which = eu4ap_replay_days value = 1 }
+    if = { limit = { check_variable = { which = eu4ap_replay_days value = 365 } }
+        set_variable = { which = eu4ap_replay_days value = 0 }
+        eu4ap_replay = yes
+    }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_delivery }
+        clr_country_flag = eu4ap_bbea7eaca3803472b3732276_delivery
+        country_event = { id = eu4ap.3 }
+    }
+}
+
 eu4ap_scan = {
+    export_to_variable = { which = eu4ap_dev_now value = total_development }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839000 } is_year = 1450 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839000 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839001 } is_year = 1455 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839001 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839002 } is_year = 1460 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839002 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839003 } is_year = 1465 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839003 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839004 } is_year = 1470 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839004 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839005 } is_year = 1475 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839005 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839006 } is_year = 1480 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839006 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839007 } is_year = 1485 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839007 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839008 } is_year = 1490 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839008 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839009 } is_year = 1495 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839009 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839010 } is_year = 1500 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839010 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839011 } is_year = 1505 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839011 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839012 } is_year = 1510 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839012 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839013 } is_year = 1515 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839013 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839014 } is_year = 1520 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839014 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839015 } is_year = 1525 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839015 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839016 } is_year = 1530 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839016 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839017 } is_year = 1535 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839017 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839018 } is_year = 1540 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839018 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839019 } is_year = 1545 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839019 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839020 } is_year = 1550 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839020 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839021 } is_year = 1555 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839021 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839022 } is_year = 1560 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839022 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839023 } is_year = 1565 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839023 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839024 } is_year = 1570 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839024 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839025 } is_year = 1575 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839025 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840000 } has_institution = renaissance } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840000 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840001 } has_institution = colonialism } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840001 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840002 } has_institution = printing_press } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840002 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840003 } has_institution = global_trade } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840003 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840010 } calc_true_if = { amount = 1 full_idea_group = aristocracy_ideas full_idea_group = plutocracy_ideas full_idea_group = innovativeness_ideas full_idea_group = religious_ideas full_idea_group = spy_ideas full_idea_group = diplomatic_ideas full_idea_group = offensive_ideas full_idea_group = defensive_ideas full_idea_group = trade_ideas full_idea_group = economic_ideas full_idea_group = exploration_ideas full_idea_group = maritime_ideas full_idea_group = quality_ideas full_idea_group = quantity_ideas full_idea_group = expansion_ideas full_idea_group = administrative_ideas full_idea_group = humanist_ideas full_idea_group = influence_ideas full_idea_group = naval_ideas } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840010 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840011 } calc_true_if = { amount = 3 full_idea_group = aristocracy_ideas full_idea_group = plutocracy_ideas full_idea_group = innovativeness_ideas full_idea_group = religious_ideas full_idea_group = spy_ideas full_idea_group = diplomatic_ideas full_idea_group = offensive_ideas full_idea_group = defensive_ideas full_idea_group = trade_ideas full_idea_group = economic_ideas full_idea_group = exploration_ideas full_idea_group = maritime_ideas full_idea_group = quality_ideas full_idea_group = quantity_ideas full_idea_group = expansion_ideas full_idea_group = administrative_ideas full_idea_group = humanist_ideas full_idea_group = influence_ideas full_idea_group = naval_ideas } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840011 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840020 } government_rank = 3 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840020 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840030 } check_variable = { which = eu4ap_dev_now which = eu4ap_dev_125 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840030 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840031 } check_variable = { which = eu4ap_dev_now which = eu4ap_dev_150 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840031 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840032 } check_variable = { which = eu4ap_dev_now which = eu4ap_dev_200 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840032 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840034 } any_owned_province = { is_core = ROOT development = 30 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840034 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840040 } num_of_allies = 2 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840040 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840041 } num_of_allies = 4 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840041 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840042 } num_of_royal_marriages = 3 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840042 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840043 } num_of_subjects = 1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840043 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840044 } num_of_subjects = 3 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840044 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840045 } personal_union = 1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840045 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840050 } army_tradition = 50 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840050 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840051 } army_tradition = 80 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840051 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840052 } any_rival_country = { ROOT = { has_won_war_against = { who = PREV max_years_since = 10 } } } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840052 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840053 } has_global_modifier_value = { which = discipline value = 0.05 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840053 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840060 } navy_size = 20 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840060 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840061 } navy_size = 50 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840061 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840070 } monthly_income = 15 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840070 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840071 } monthly_income = 30 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840071 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840073 } trade_income_percentage = 0.3 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840073 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840074 } years_of_income = 0.5 NOT = { num_of_loans = 1 } is_bankrupt = no } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840074 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840075 } years_of_income = 1.5 NOT = { num_of_loans = 1 } is_bankrupt = no } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840075 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840080 } OR = { north_america = { has_discovered = ROOT } south_america = { has_discovered = ROOT } } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840080 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840081 } num_of_colonies = 1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840081 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840082 } any_subject_country = { is_colonial_nation = yes } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840082 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840083 } calc_true_if = { amount = 3 any_owned_province = { continent = europe } any_owned_province = { continent = asia } any_owned_province = { continent = africa } any_owned_province = { continent = north_america } any_owned_province = { continent = south_america } any_owned_province = { continent = oceania } } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840083 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840090 } religious_unity = 1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840090 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840091 } prestige = 75 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840091 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840092 } stability = 3 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840092 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857312 } mission_completed = emp_fra_establish_the_musketeers } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857312 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857313 } mission_completed = emp_fra_france_discovers_north_america } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857313 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857314 } mission_completed = emp_fra_france_discovers_the_carribean } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857314 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857315 } mission_completed = emp_fra_integrate_vassals } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857315 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857316 } mission_completed = emp_fra_reconquer_gascony } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857316 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857317 } mission_completed = emp_fra_reconquer_normandy } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857317 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857318 } mission_completed = emp_fra_subjugate_brittany } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857318 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857319 } mission_completed = emp_fra_brest } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857319 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857320 } mission_completed = emp_fra_conquer_provence } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857320 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857326 } mission_completed = build_french_fleet } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857326 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857327 } mission_completed = reconquer_gascony } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857327 }
+    if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857328 } mission_completed = reconquer_normandy } set_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857328 }
     if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837001 } is_year = 1445 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837001
+        limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_ambition } is_great_power = yes check_variable = { which = eu4ap_dev_now which = eu4ap_dev_200 } }
+        set_country_flag = eu4ap_bbea7eaca3803472b3732276_ambition
+        log = "EU4AP bbea7eaca3803472b3732276 AMBITION"
     }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837002 } is_year = 1446 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837002
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837003 } is_year = 1447 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837003
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837004 } is_year = 1448 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837004
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837005 } is_year = 1449 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837005
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837006 } is_year = 1450 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837006
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837100 } treasury = 100 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837100
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837101 } treasury = 250 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837101
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837102 } treasury = 500 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837102
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837103 } treasury = 1000 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837103
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837200 } adm_tech = 4 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837200
-    }
-    if = {
-        limit = { NOT = { has_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837201 } dip_tech = 4 }
-        set_country_flag = eu4ap_07502effa99c7120fb38d675_check_4837201
-    }
+    eu4ap_promote = yes
+}
+
+eu4ap_promote = {
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839000 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839000 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839000 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839000" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839001 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839001 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839001 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839001" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839002 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839002 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839002 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839002" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839003 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839003 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839003 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839003" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839004 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839004 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839004 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839004" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839005 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839005 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839005 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839005" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839006 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839006 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839006 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839006" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839007 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839007 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839007 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839007" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839008 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839008 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839008 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839008" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839009 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839009 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839009 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839009" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839010 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839010 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839010 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839010" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839011 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839011 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839011 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839011" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839012 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839012 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839012 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839012" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839013 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839013 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839013 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839013" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839014 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839014 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839014 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839014" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839015 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839015 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839015 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839015" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839016 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839016 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839016 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839016" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839017 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839017 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839017 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839017" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839018 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839018 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839018 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839018" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839019 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839019 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839019 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839019" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839020 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839020 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839020 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839020" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839021 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839021 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839021 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839021" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839022 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839022 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839022 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839022" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839023 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839023 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839023 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839023" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839024 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839024 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839024 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839024" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4839025 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839025 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839025 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839025" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840000 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840000 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840000 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840000" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840001 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840001 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840001 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840001" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840002 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840002 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840002 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840002" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840003 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840003 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840003 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840003" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840010 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840010 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840010 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840010" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840011 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840011 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840011 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840011" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840020 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840020 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840020 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840020" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840030 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840030 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840030 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840030" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840031 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840031 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840031 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840031" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840032 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840032 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840032 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840032" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840034 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840034 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840034 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840034" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840040 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840040 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840040 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840040" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840041 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840041 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_2 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840041 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840041" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840042 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840042 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840042 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840042" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840043 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840043 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840043 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840043" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840044 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840044 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_2 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840044 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840044" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840045 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840045 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_2 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840045 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840045" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840050 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840050 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840050 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840050" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840051 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840051 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840051 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840051" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840052 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840052 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840052 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840052" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840053 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840053 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840053 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840053" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840060 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840060 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840060 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840060" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840061 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840061 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_2 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840061 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840061" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840070 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840070 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840070 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840070" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840071 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840071 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840071 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840071" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840073 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840073 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840073 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840073" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840074 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840074 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840074 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840074" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840075 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840075 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840075 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840075" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840080 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840080 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840080 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840080" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840081 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840081 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840081 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840081" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840082 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840082 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_2 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840082 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840082" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840083 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840083 } has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_1 } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840083 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840083" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840090 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840090 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840090 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840090" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840091 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840091 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840091 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840091" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4840092 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840092 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840092 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840092" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857312 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857312 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857312 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857312" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857313 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857313 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857313 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857313" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857314 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857314 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857314 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857314" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857315 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857315 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857315 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857315" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857316 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857316 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857316 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857316" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857317 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857317 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857317 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857317" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857318 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857318 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857318 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857318" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857319 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857319 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857319 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857319" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857320 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857320 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857320 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857320" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857326 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857326 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857326 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857326" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857327 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857327 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857327 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857327" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_done_4857328 NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857328 }  } set_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857328 log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857328" }
+}
+
+eu4ap_recompute = {
+    # Fetter admiralty
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_2 } if = { limit = { has_country_modifier = eu4ap_fetter_admiralty_0 } remove_country_modifier = eu4ap_fetter_admiralty_0 } if = { limit = { has_country_modifier = eu4ap_fetter_admiralty_1 } remove_country_modifier = eu4ap_fetter_admiralty_1 } }
+    else_if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_1 } if = { limit = { has_country_modifier = eu4ap_fetter_admiralty_0 } remove_country_modifier = eu4ap_fetter_admiralty_0 } if = { limit = { NOT = { has_country_modifier = eu4ap_fetter_admiralty_1 } } add_country_modifier = { name = eu4ap_fetter_admiralty_1 duration = -1 } } }
+    else = { if = { limit = { has_country_modifier = eu4ap_fetter_admiralty_1 } remove_country_modifier = eu4ap_fetter_admiralty_1 } if = { limit = { NOT = { has_country_modifier = eu4ap_fetter_admiralty_0 } } add_country_modifier = { name = eu4ap_fetter_admiralty_0 duration = -1 } } }
+    # Fetter chancery
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_2 } if = { limit = { has_country_modifier = eu4ap_fetter_chancery_0 } remove_country_modifier = eu4ap_fetter_chancery_0 } if = { limit = { has_country_modifier = eu4ap_fetter_chancery_1 } remove_country_modifier = eu4ap_fetter_chancery_1 } }
+    else_if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_1 } if = { limit = { has_country_modifier = eu4ap_fetter_chancery_0 } remove_country_modifier = eu4ap_fetter_chancery_0 } if = { limit = { NOT = { has_country_modifier = eu4ap_fetter_chancery_1 } } add_country_modifier = { name = eu4ap_fetter_chancery_1 duration = -1 } } }
+    else = { if = { limit = { has_country_modifier = eu4ap_fetter_chancery_1 } remove_country_modifier = eu4ap_fetter_chancery_1 } if = { limit = { NOT = { has_country_modifier = eu4ap_fetter_chancery_0 } } add_country_modifier = { name = eu4ap_fetter_chancery_0 duration = -1 } } }
+    # Fetter colonial
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_2 } if = { limit = { has_country_modifier = eu4ap_fetter_colonial_0 } remove_country_modifier = eu4ap_fetter_colonial_0 } if = { limit = { has_country_modifier = eu4ap_fetter_colonial_1 } remove_country_modifier = eu4ap_fetter_colonial_1 } }
+    else_if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_1 } if = { limit = { has_country_modifier = eu4ap_fetter_colonial_0 } remove_country_modifier = eu4ap_fetter_colonial_0 } if = { limit = { NOT = { has_country_modifier = eu4ap_fetter_colonial_1 } } add_country_modifier = { name = eu4ap_fetter_colonial_1 duration = -1 } } }
+    else = { if = { limit = { has_country_modifier = eu4ap_fetter_colonial_1 } remove_country_modifier = eu4ap_fetter_colonial_1 } if = { limit = { NOT = { has_country_modifier = eu4ap_fetter_colonial_0 } } add_country_modifier = { name = eu4ap_fetter_colonial_0 duration = -1 } } }
+    # Fetter guilds
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_2 } if = { limit = { has_country_modifier = eu4ap_fetter_guilds_0 } remove_country_modifier = eu4ap_fetter_guilds_0 } if = { limit = { has_country_modifier = eu4ap_fetter_guilds_1 } remove_country_modifier = eu4ap_fetter_guilds_1 } }
+    else_if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_1 } if = { limit = { has_country_modifier = eu4ap_fetter_guilds_0 } remove_country_modifier = eu4ap_fetter_guilds_0 } if = { limit = { NOT = { has_country_modifier = eu4ap_fetter_guilds_1 } } add_country_modifier = { name = eu4ap_fetter_guilds_1 duration = -1 } } }
+    else = { if = { limit = { has_country_modifier = eu4ap_fetter_guilds_1 } remove_country_modifier = eu4ap_fetter_guilds_1 } if = { limit = { NOT = { has_country_modifier = eu4ap_fetter_guilds_0 } } add_country_modifier = { name = eu4ap_fetter_guilds_0 duration = -1 } } }
+}
+
+eu4ap_replay = {
+    if = { limit = { ironman = yes } log = "EU4AP bbea7eaca3803472b3732276 HELLO 2 ironman" } else = { log = "EU4AP bbea7eaca3803472b3732276 HELLO 2 normal" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839000 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839000" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839001 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839001" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839002 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839002" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839003 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839003" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839004 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839004" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839005 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839005" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839006 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839006" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839007 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839007" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839008 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839008" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839009 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839009" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839010 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839010" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839011 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839011" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839012 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839012" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839013 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839013" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839014 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839014" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839015 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839015" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839016 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839016" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839017 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839017" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839018 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839018" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839019 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839019" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839020 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839020" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839021 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839021" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839022 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839022" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839023 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839023" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839024 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839024" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4839025 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4839025" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840000 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840000" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840001 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840001" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840002 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840002" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840003 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840003" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840010 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840010" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840011 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840011" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840020 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840020" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840030 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840030" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840031 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840031" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840032 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840032" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840034 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840034" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840040 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840040" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840041 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840041" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840042 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840042" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840043 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840043" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840044 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840044" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840045 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840045" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840050 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840050" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840051 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840051" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840052 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840052" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840053 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840053" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840060 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840060" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840061 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840061" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840070 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840070" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840071 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840071" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840073 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840073" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840074 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840074" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840075 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840075" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840080 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840080" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840081 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840081" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840082 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840082" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840083 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840083" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840090 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840090" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840091 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840091" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4840092 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4840092" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857312 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857312" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857313 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857313" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857314 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857314" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857315 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857315" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857316 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857316" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857317 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857317" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857318 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857318" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857319 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857319" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857320 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857320" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857326 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857326" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857327 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857327" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_check_4857328 } log = "EU4AP bbea7eaca3803472b3732276 CHECK 4857328" }
+    eu4ap_replay_items = yes
+    eu4ap_replay_claims = yes
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_ambition } log = "EU4AP bbea7eaca3803472b3732276 AMBITION" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_goal } log = "EU4AP bbea7eaca3803472b3732276 GOAL" }
 }

@@ -12,7 +12,7 @@ from typing import Callable
 from .locking import ProcessLock
 from .manifest import Manifest
 from .json_state import JsonState
-from .render import atomic_text, install_mod
+from .render import atomic_text, install_mod, mod_root
 from .synchronization import POLL_INTERVAL, Synchronizer
 
 log = logging.getLogger("EU4")
@@ -77,14 +77,36 @@ class Profile:
         # Stable across save renames and client restarts; separate for every slot/seed.
         return Path(self.user_dir) / "eu4ap" / manifest.token / "campaign.json"
 
-    def install(self) -> Path:
+    def install(self, eu4_running: Callable[[], bool] | None = None) -> Path:
         self.validate_user_dir()
         manifest = self.read_manifest()
         lock = ProcessLock(Path(self.user_dir) / "eu4ap_client.lock")
         try:
-            return install_mod(manifest, Path(self.user_dir))
+            if manifest.schema == 1:
+                return install_mod(manifest, Path(self.user_dir))
+            if eu4_running is None:
+                from .process import eu4_running
+            if eu4_running():
+                raise ValueError("Fermez EU4 avant d'installer le mod : ses définitions ne sont lues qu'au lancement.")
+            # Reinstalling keeps every item already received in the inbox.
+            path = self.state_path(manifest)
+            items, deathlinks, state = [], 0, None
+            if path.is_file():
+                state = JsonState(path, manifest.token)
+                items = state.items()
+                deathlinks = int(state.get("deathlinks_in") or 0)
+            root = install_mod(manifest, Path(self.user_dir), items, deathlinks)
+            if state:
+                state.mark_staged({row[0] for row in items})
+            return root
         finally:
             lock.close()
+
+    def check_installed(self, manifest: Manifest) -> None:
+        installed = mod_root(Path(self.user_dir)) / "eu4ap_manifest.json"
+        if not installed.is_file() or Manifest.read(installed) != manifest:
+            raise ValueError("Le mod installé ne correspond pas à ce manifeste. Fermez EU4 et cliquez "
+                             "sur « Installer le mod » avant de vous connecter.")
 
 
 class Session:
@@ -108,11 +130,20 @@ class Session:
         if not profile.server.strip() or not profile.name.strip():
             raise ValueError("Renseignez le serveur et le nom du joueur Archipelago.")
         profile.validate_user_dir()
-        if not profile.save.strip() or not Path(profile.save).is_file():
-            raise ValueError("Sélectionnez une sauvegarde EU4 locale existante.")
         manifest = profile.read_manifest()
         if manifest.seed == "OFFLINE-POC":
             raise ValueError("Utilisez le manifeste généré pour le serveur, pas OFFLINE-POC.")
+        v2 = manifest.schema == 2
+        save = Path(profile.save) if profile.save.strip() else None
+        if not v2 and (save is None or not save.is_file()):
+            raise ValueError("Sélectionnez une sauvegarde EU4 locale existante.")
+        if v2:
+            profile.check_installed(manifest)
+            if manifest.save_mode == "ironman":
+                save = None  # Ironman saves are binary: game.log is the only outbound channel.
+            elif save is not None and not save.is_file():
+                raise ValueError("La sauvegarde sélectionnée n'existe pas ; laissez le champ vide "
+                                 "pour utiliser seulement le journal du jeu.")
         lock = ProcessLock(Path(profile.user_dir) / "eu4ap_client.lock")
         state = None
         handler = None
@@ -123,30 +154,27 @@ class Session:
             handler = logging.FileHandler(path.with_suffix(".log"), encoding="utf-8")
             handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
             log.addHandler(handler)
-            sync = Synchronizer(manifest, state, Path(profile.user_dir) / "eu4ap_sync.txt")
-            await sync.poll_async(Path(profile.save))  # Validate binding before connecting.
+            user_dir = Path(profile.user_dir)
+            sync = Synchronizer(manifest, state, user_dir / "eu4ap_sync.txt",
+                                log_path=user_dir / "logs" / "game.log" if v2 else None,
+                                user_dir=user_dir if v2 else None)
+            await sync.poll_async(save)  # Validate binding (schema 1) or read the log (schema 2).
             if self.stopping:
                 return
             ctx = self.context = EU4Context(sync, profile.server.strip(), profile.name.strip(), self.password or None)
             ctx.server_task = asyncio.create_task(server_loop(ctx), name="EU4 server")
-            log.info("Suivi de %s ; état persistant : %s", profile.save, path)
+            log.info("Suivi de %s ; état persistant : %s", save or "game.log", path)
             previous = None
             while not ctx.exit_event.is_set():
                 try:
-                    await ctx.tick(Path(profile.save))
+                    await ctx.tick(save)
                 except (OSError, ValueError) as exc:
                     if ctx.sync_error != str(exc):
                         log.error("Synchronisation suspendue : %s", exc)
                     ctx.sync_error = str(exc)
                 status = ctx.status()
                 if status != previous:
-                    rows = state.items()
-                    pending = sum(row[-1] == "pending" for row in rows)
-                    confirmed = sum(row[-1] == "confirmed" for row in rows)
-                    connection = "Connecté" if ctx.validated and ctx.slot is not None else "En attente du serveur"
-                    report(f"{connection} · {manifest.country} · Objectifs : {len(state.checks())}/{len(manifest.locations)}\n"
-                           f"Objets à appliquer : {pending} · Confirmés : {confirmed}"
-                           + (f"\n{ctx.sync_error}" if ctx.sync_error else ""))
+                    report(summary(manifest, sync, ctx) + (f"\n{ctx.sync_error}" if ctx.sync_error else ""))
                     previous = status
                 try:
                     await asyncio.wait_for(ctx.exit_event.wait(), timeout=POLL_INTERVAL)
@@ -184,3 +212,32 @@ class Session:
             ctx.input_queue.put_nowait(text)
         else:
             ctx.command_processor(ctx)(text)
+
+
+def summary(manifest: Manifest, sync: Synchronizer, ctx) -> str:
+    """French status line shown by the Launcher client."""
+    connection = "Connecté" if ctx.validated and ctx.slot is not None else "En attente du serveur"
+    counts = sync.counts()
+    checks = f"Objectifs : {len(sync.state.checks())}/{len(manifest.locations)}"
+    if manifest.schema == 1:
+        return (f"{connection} · {manifest.country} · {checks}\n"
+                f"Objets à appliquer : {counts['pending']} · Confirmés : {counts['confirmed']}")
+    codes = sync.pending_codes()
+    coded = {code for code, _name in codes}
+    with_code = len(sync.codes().keys() & {r[0] for r in sync.state.items() if r[-1] in ("received", "pending")})
+    waiting = counts["received"] + counts["pending"] - with_code
+    applied = counts["applied"] + counts["confirmed"]
+    detected = sync.state.get("detected_mode")
+    mode = "Ironman" if manifest.save_mode == "ironman" else "normal"
+    if waiting and manifest.save_mode == "ironman":
+        hint = " — relancez EU4 pour les recevoir"
+    elif waiting:
+        hint = " — console : run eu4ap_sync.txt, ou relancez EU4"
+    else:
+        hint = ""
+    shown = ", ".join(f"{code} {name}" for code, name in codes[:6]) + (" …" if len(codes) > 6 else "")
+    entry = (f"\nÀ saisir en jeu (décision « réceptionner une livraison ») : {shown}" if coded else "")
+    return (f"{connection} · {manifest.country} · mode {mode}"
+            + (f" (jeu : {detected})" if detected else "") + f" · {checks}\n"
+            f"Objets appliqués : {applied} · codes à saisir : {len(codes)} · sans code, au prochain "
+            f"relancement : {waiting}{hint}{entry}")

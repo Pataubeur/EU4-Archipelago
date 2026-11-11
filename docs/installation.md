@@ -2,11 +2,12 @@
 
 ## Compatibility and prerequisites
 
-Use Windows Archipelago **0.6.7** and EU4 **1.37.5.0**, non-Ironman with console
-access, a local text save and a campaign starting on 1444-11-11. EU4 is the
-intended engine target; live-game acceptance is pending. Other versions, OSes
-and DLC combinations are unverified. No paid DLC is deliberately required;
-a no-DLC game still needs testing. Avoid other gameplay mods for initial tests.
+Use Windows Archipelago **0.6.7** and EU4 **1.37.5.0**, with a campaign starting
+on 1444-11-11, in **normal** or **Ironman** mode (`save_mode` in your YAML).
+EU4 is the intended engine target; live-game acceptance is pending, and Ironman
+depends on experiments E1–E3 (see [validation.md](validation.md)). Other
+versions, OSes and DLC combinations are unverified. No paid DLC is required;
+declare the DLCs you run in `owned_dlcs`. Avoid other gameplay mods.
 
 The release's `eu4.apworld` includes the World, Launcher GUI and mod renderer.
 Archipelago supplies Python, Kivy and networking. **Players need no separate
@@ -15,8 +16,8 @@ user folder before installing the integration.
 
 ## Install Archipelago and prepare your player
 
-1. Extract `eu4-player-kit-0.4.1.zip` supplied by the maintainer. If checksums
-   accompany it, compare `Get-FileHash .\eu4-player-kit-0.4.1.zip -Algorithm SHA256`
+1. Extract `eu4-player-kit-0.5.0.zip` supplied by the maintainer. If checksums
+   accompany it, compare `Get-FileHash .\eu4-player-kit-0.5.0.zip -Algorithm SHA256`
    with the ZIP's line in `SHA256SUMS`.
 2. Install [Archipelago 0.6.7](https://github.com/ArchipelagoMW/Archipelago/releases/tag/0.6.7).
    In its Launcher choose **Install APWorld**, select `eu4.apworld`, then close
@@ -67,39 +68,49 @@ host instructions are in [development.md](development.md).
    game installation. Use **Parcourir** for a custom `userdir.txt` location.
 3. **Close EU4**, click **Installer le mod (EU4 fermé)** and wait for success.
    The client writes its generated files in `mod/eu4_archipelago/` and
-   `mod/eu4_archipelago.mod`. It cannot verify that the game is stopped.
+   `mod/eu4_archipelago.mod`. For 0.5.0 manifests it refuses while `eu4.exe`
+   runs (process list only) and keeps already received items in the inbox.
 4. Add **EU4 Archipelago** to a dedicated Paradox launcher playset and enable it.
    Use one seed's mod at a time.
-5. Start the manifest's country on 1444-11-11 without Ironman. In Decisions take
-   **Archipelago: bind this campaign** / **lier cette campagne**. Save locally as
-   text to a dedicated file such as `ap_campaign.eu4`. Initially disable save
-   compression. Cloud-only and binary saves are unsupported.
+5. Start the manifest's country on 1444-11-11, in the mode chosen in your YAML
+   (Ironman or not). In Decisions take **Archipelago: bind this campaign** /
+   **lier cette campagne**. In normal mode you may also save locally as an
+   **uncompressed** text file (`compress_saves=no`): EU4 1.37 compresses saves
+   in binary form, which the client cannot read. Cloud-only saves are unsupported.
 
 ## Connect and play
 
-Select that `.eu4` in the client. Enter the server's `hostname:port`, exact YAML
-player name (not a country tag), and optional password. Click **Se connecter**.
-A mismatched seed, slot, country or campaign blocks synchronization: correct the
-selected files instead of resetting progress.
+Enter the server's `hostname:port`, exact YAML player name (not a country tag),
+and optional password. The save field is optional for 0.5.0 manifests (normal
+mode only; it adds rollback detection) and required for classic `royal_charters`
+manifests. Click **Se connecter**. The client checks that the installed mod
+matches the manifest. A mismatched seed, slot or campaign blocks synchronization:
+correct the selected files instead of resetting progress.
 
-Keep the client open. The mod records objectives every game day; save to send
-them. The client checks file changes every 250 ms and parses only changed saves.
-Use the rescan decision for an immediate scan. Older campaigns upgraded from the
-monthly scanner need that decision once to start the daily chain.
+Keep the client open while EU4 runs. It reads EU4's `logs/game.log`, where the
+mod writes `EU4AP <token> …` lines: completed checks are sent as they happen,
+without saving. EU4 overwrites this log at each launch; the mod replays its
+state every game year and when you take **scan objectives now**, so a client
+started late catches up.
 
-Incoming rewards remain pending until you pause EU4, open its console and enter:
+Received items:
 
-```text
-run eu4ap_sync.txt
-```
+- **Live (normal and Ironman)**: the client's journal and summary show a 4-digit
+  code for each received item (« À saisir en jeu »). In EU4 take **Archipelago:
+  receive a delivery**, enter the code, check the item name and accept. The item
+  applies immediately, without saving or relaunching.
+- **Ironman, items without a code** (rare: server `/send`, extra DeathLinks): close EU4. The client installs every received item into the mod
+  (`eu4ap_inbox.txt`) and shows « en attente du prochain relancement ». Relaunch
+  EU4 and continue: items apply the next game day, once each, announced by an
+  event. Relaunch at natural moments or when a key or seal waits.
+- **Normal**: same relaunch path, or the fast path: pause, open the console and
+  run `run eu4ap_sync.txt` (**Copier la commande EU4** copies it). Repeating it is
+  harmless: every item has its own flag.
 
-Then save to the watched path. Only item flags in the save acknowledge the
-reward. **Copier la commande EU4** copies the command. Repeating it is designed
-to be idempotent; verify this with the [acceptance protocol](manual-validation.md)
-before trusting a valuable campaign. Console keys depend on keyboard layout.
-Once all required Royal Charters are applied, take **ratify the royal charters**
-and save to report victory. Chat supports `!help`, `/help`, `/status`.
-**Déconnecter** stops the connection and retains progress.
+The client marks an item applied only when EU4 logs it (or a save contains its
+flag), never because it wrote a file. Once the goal requirements are met, take
+**ratify the victory**; the log reports it immediately. Chat supports `!help`,
+`/help`, `/status`. **Déconnecter** stops the connection and retains progress.
 
 ## Update, reinstall or remove
 
@@ -110,10 +121,12 @@ mod while EU4 is closed and load the same save. Saves and
 `eu4ap/<token>/campaign.json` are retained. Do not generate a new seed to update
 an existing campaign.
 
-Version 0.4.1 keeps the manifest schema, seed tokens and IDs unchanged for existing
-campaigns. Old eight-country YAMLs, including their numeric option values, remain
-valid. Do not edit an existing manifest to switch countries: generate a new seed
-and use a new campaign instead.
+Version 0.5.0 introduces manifest **schema 2** (ambitions, fetters, keys,
+Ironman). Schema 1 manifests from 0.4.x keep their tokens, IDs and behaviour and
+are still read; a campaign never changes schema. A YAML without a `goal` key now
+generates the new default `mixed` goal; set `goal: royal_charters` for the classic
+mode. Do not edit an existing manifest to switch countries or schema: generate a
+new seed and use a new campaign instead.
 
 A different manifest switches the active mod, backing up the previous mod to
 `eu4ap/mod-backups/<token>-<timestamp>/`. To resume an old campaign, close EU4,
@@ -138,8 +151,15 @@ saves, campaign state or unrelated files.
 | Invalid EU4 folder | Launch EU4 once; select its Documents user folder including any OneDrive/custom redirection |
 | No binding decision | Check playset, selected country/date and EU4 `logs/error.log` |
 | Save not bound / wrong seed | Bind and save with the matching mod and manifest |
-| Binary/unreadable save | Disable Ironman and use a local text save, initially uncompressed |
-| Reward pending | Run the console command, save to the watched path, inspect EU4 error.log |
+| Binary/unreadable save | Clear the save field (0.5.0 uses game.log), or save uncompressed outside Ironman |
+| Items « codes à saisir » | Take **receive a delivery** in EU4 and enter each code |
+| « code inconnu » in game / client warning | Re-enter the code shown by the client; a claimed but unreceived code is reported, not undone |
+| Items « sans code, au prochain relancement » | Close EU4; the client installs them; relaunch and play one day |
+| Items installed but not applied | Load the bound campaign and unpause one day; check EU4 `logs/error.log` |
+| No check sent | Keep the client open while EU4 runs; take **scan objectives now** to replay the state into game.log |
+| « Le mod installé ne correspond pas » | Close EU4, select the right manifest, click **Installer le mod** |
+| Mode warning (Ironman/normal) | The YAML `save_mode` differs from the game; logic (traps, delays) assumed the other mode |
+| Reward pending (normal) | Run the console command or relaunch EU4, inspect EU4 error.log |
 | Unknown native effect | Stop; retain engine version, logs and before/after saves; EU4 acceptance is pending |
 | Server rejected / wrong slot | Check address, port, password, YAML name and manifest with the host |
 | Rollback detected | Restore the latest synchronized save while keeping client state; do not reset state to bypass the check |

@@ -1,0 +1,8 @@
+# Seed bbea7eaca3803472b3732276: every received item, each guarded by its own flag.
+# Rewritten by the client only while EU4 is closed; applied by the daily event.
+eu4ap_inbox = {
+
+}
+eu4ap_replay_items = {
+
+}

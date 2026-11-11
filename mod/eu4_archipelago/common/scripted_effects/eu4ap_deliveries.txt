@@ -1,0 +1,834 @@
+# Seed bbea7eaca3803472b3732276: live deliveries, fixed for the whole campaign.
+eu4ap_claim = {
+    if = {
+        limit = { check_variable = { which = eu4ap_code value = 1018 } NOT = { check_variable = { which = eu4ap_code value = 1019 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1018 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 1018" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1018
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 1018"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 1230 } NOT = { check_variable = { which = eu4ap_code value = 1231 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1230 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 1230" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1230
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 1230"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 1663 } NOT = { check_variable = { which = eu4ap_code value = 1664 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1663 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 1663" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1663
+            add_mil_power = 50
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 1663"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2020 } NOT = { check_variable = { which = eu4ap_code value = 2021 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2020 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2020" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2020
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_2 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2020"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2031 } NOT = { check_variable = { which = eu4ap_code value = 2032 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2031 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2031" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2031
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2031"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2208 } NOT = { check_variable = { which = eu4ap_code value = 2209 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2208 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2208" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2208
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2208"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2318 } NOT = { check_variable = { which = eu4ap_code value = 2319 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2318 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2318" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2318
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2318"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2494 } NOT = { check_variable = { which = eu4ap_code value = 2495 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2494 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2494" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2494
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2494"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2501 } NOT = { check_variable = { which = eu4ap_code value = 2502 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2501 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2501" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2501
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2501"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2528 } NOT = { check_variable = { which = eu4ap_code value = 2529 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2528 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2528" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2528
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2528"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2553 } NOT = { check_variable = { which = eu4ap_code value = 2554 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2553 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2553" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2553
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2553"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2618 } NOT = { check_variable = { which = eu4ap_code value = 2619 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2618 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2618" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2618
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2618"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2649 } NOT = { check_variable = { which = eu4ap_code value = 2650 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2649 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2649" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2649
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_2 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_3 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_3 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_4 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_4 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_5 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_5 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_6 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_6 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_7 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_7 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_8 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_8 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2649"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 2786 } NOT = { check_variable = { which = eu4ap_code value = 2787 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2786 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 2786" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2786
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2786"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 3044 } NOT = { check_variable = { which = eu4ap_code value = 3045 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3044 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 3044" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3044
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3044"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 3281 } NOT = { check_variable = { which = eu4ap_code value = 3282 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3281 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 3281" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3281
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3281"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 3289 } NOT = { check_variable = { which = eu4ap_code value = 3290 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3289 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 3289" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3289
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3289"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 3334 } NOT = { check_variable = { which = eu4ap_code value = 3335 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3334 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 3334" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3334
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3334"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 3407 } NOT = { check_variable = { which = eu4ap_code value = 3408 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3407 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 3407" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3407
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3407"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4012 } NOT = { check_variable = { which = eu4ap_code value = 4013 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4012 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4012" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4012
+            add_war_exhaustion = -3
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4012"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4102 } NOT = { check_variable = { which = eu4ap_code value = 4103 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4102 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4102" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4102
+            add_country_modifier = { name = eu4ap_missionary_zeal duration = 3650 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4102"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4130 } NOT = { check_variable = { which = eu4ap_code value = 4131 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4130 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4130" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4130
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4130"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4329 } NOT = { check_variable = { which = eu4ap_code value = 4330 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4329 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4329" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4329
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4329"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4350 } NOT = { check_variable = { which = eu4ap_code value = 4351 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4350 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4350" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4350
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_2 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4350"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4578 } NOT = { check_variable = { which = eu4ap_code value = 4579 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4578 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4578" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4578
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4578"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4632 } NOT = { check_variable = { which = eu4ap_code value = 4633 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4632 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4632" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4632
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4632"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4909 } NOT = { check_variable = { which = eu4ap_code value = 4910 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4909 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4909" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4909
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4909"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4966 } NOT = { check_variable = { which = eu4ap_code value = 4967 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4966 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4966" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4966
+            add_yearly_manpower = 0.5
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4966"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 4996 } NOT = { check_variable = { which = eu4ap_code value = 4997 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4996 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 4996" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4996
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4996"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 5104 } NOT = { check_variable = { which = eu4ap_code value = 5105 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5104 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 5104" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5104
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5104"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 5242 } NOT = { check_variable = { which = eu4ap_code value = 5243 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5242 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 5242" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5242
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5242"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 5267 } NOT = { check_variable = { which = eu4ap_code value = 5268 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5267 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 5267" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5267
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_guilds_2 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5267"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 5617 } NOT = { check_variable = { which = eu4ap_code value = 5618 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5617 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 5617" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5617
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5617"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 5712 } NOT = { check_variable = { which = eu4ap_code value = 5713 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5712 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 5712" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5712
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5712"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 5756 } NOT = { check_variable = { which = eu4ap_code value = 5757 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5756 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 5756" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5756
+            add_country_modifier = { name = eu4ap_court_patronage duration = 3650 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5756"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 5769 } NOT = { check_variable = { which = eu4ap_code value = 5770 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5769 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 5769" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5769
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5769"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 5938 } NOT = { check_variable = { which = eu4ap_code value = 5939 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5938 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 5938" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5938
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5938"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 5969 } NOT = { check_variable = { which = eu4ap_code value = 5970 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5969 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 5969" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5969
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5969"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6081 } NOT = { check_variable = { which = eu4ap_code value = 6082 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6081 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6081" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6081
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6081"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6180 } NOT = { check_variable = { which = eu4ap_code value = 6181 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6180 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6180" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6180
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_2 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6180"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6194 } NOT = { check_variable = { which = eu4ap_code value = 6195 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6194 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6194" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6194
+            add_army_tradition = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6194"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6243 } NOT = { check_variable = { which = eu4ap_code value = 6244 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6243 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6243" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6243
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6243"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6328 } NOT = { check_variable = { which = eu4ap_code value = 6329 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6328 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6328" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6328
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6328"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6409 } NOT = { check_variable = { which = eu4ap_code value = 6410 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6409 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6409" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6409
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_2 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_3 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_3 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_4 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_4 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_5 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_5 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_6 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_6 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_7 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_7 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_8 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_8 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6409"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6451 } NOT = { check_variable = { which = eu4ap_code value = 6452 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6451 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6451" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6451
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6451"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6458 } NOT = { check_variable = { which = eu4ap_code value = 6459 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6458 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6458" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6458
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6458"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6796 } NOT = { check_variable = { which = eu4ap_code value = 6797 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6796 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6796" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6796
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_2 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_3 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_3 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_4 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_4 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_5 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_5 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_6 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_6 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_7 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_7 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_8 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_8 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6796"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 6866 } NOT = { check_variable = { which = eu4ap_code value = 6867 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6866 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 6866" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6866
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6866"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 7306 } NOT = { check_variable = { which = eu4ap_code value = 7307 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7306 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 7306" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7306
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7306"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 7311 } NOT = { check_variable = { which = eu4ap_code value = 7312 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7311 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 7311" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7311
+            add_adm_power = 50
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7311"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 7534 } NOT = { check_variable = { which = eu4ap_code value = 7535 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7534 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 7534" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7534
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7534"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 7634 } NOT = { check_variable = { which = eu4ap_code value = 7635 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7634 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 7634" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7634
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7634"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 7890 } NOT = { check_variable = { which = eu4ap_code value = 7891 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7890 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 7890" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7890
+            add_dip_power = 50
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7890"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 8113 } NOT = { check_variable = { which = eu4ap_code value = 8114 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8113 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 8113" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8113
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_colonial_2 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8113"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 8253 } NOT = { check_variable = { which = eu4ap_code value = 8254 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8253 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 8253" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8253
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_2 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8253"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 8290 } NOT = { check_variable = { which = eu4ap_code value = 8291 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8290 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 8290" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8290
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8290"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 8339 } NOT = { check_variable = { which = eu4ap_code value = 8340 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8339 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 8339" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8339
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8339"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 8735 } NOT = { check_variable = { which = eu4ap_code value = 8736 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8735 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 8735" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8735
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_2 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_3 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_3 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_4 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_4 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_5 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_5 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_6 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_6 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_7 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_7 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_8 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_seal_8 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8735"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 8808 } NOT = { check_variable = { which = eu4ap_code value = 8809 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8808 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 8808" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8808
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8808"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 8815 } NOT = { check_variable = { which = eu4ap_code value = 8816 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8815 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 8815" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8815
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_admiralty_2 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8815"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 8961 } NOT = { check_variable = { which = eu4ap_code value = 8962 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8961 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 8961" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8961
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8961"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9016 } NOT = { check_variable = { which = eu4ap_code value = 9017 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9016 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9016" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9016
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9016"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9086 } NOT = { check_variable = { which = eu4ap_code value = 9087 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9086 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9086" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9086
+            add_years_of_income = 0.25
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9086"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9268 } NOT = { check_variable = { which = eu4ap_code value = 9269 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9268 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9268" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9268
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9268"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9322 } NOT = { check_variable = { which = eu4ap_code value = 9323 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9322 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9322" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9322
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9322"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9376 } NOT = { check_variable = { which = eu4ap_code value = 9377 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9376 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9376" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9376
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9376"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9541 } NOT = { check_variable = { which = eu4ap_code value = 9542 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9541 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9541" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9541
+            if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_1 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_1 }
+            else_if = { limit = { NOT = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_2 } } set_country_flag = eu4ap_bbea7eaca3803472b3732276_lvl_chancery_2 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9541"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9725 } NOT = { check_variable = { which = eu4ap_code value = 9726 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9725 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9725" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9725
+            add_prestige = 10
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9725"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9852 } NOT = { check_variable = { which = eu4ap_code value = 9853 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9852 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9852" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9852
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9852"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9896 } NOT = { check_variable = { which = eu4ap_code value = 9897 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9896 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9896" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9896
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9896"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9965 } NOT = { check_variable = { which = eu4ap_code value = 9966 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9965 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9965" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9965
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9965"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9969 } NOT = { check_variable = { which = eu4ap_code value = 9970 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9969 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9969" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9969
+            if = { limit = { government = monarchy } add_legitimacy = 10 }
+            else_if = { limit = { government = republic } add_republican_tradition = 10 }
+            else_if = { limit = { government = theocracy } add_devotion = 10 }
+            else = { add_prestige = 10 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9969"
+        }
+    }
+    else_if = {
+        limit = { check_variable = { which = eu4ap_code value = 9989 } NOT = { check_variable = { which = eu4ap_code value = 9990 } } }
+        if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9989 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM_DUPLICATE 9989" }
+        else = {
+            set_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9989
+            add_country_modifier = { name = eu4ap_decree duration = 3650 }
+            log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9989"
+        }
+    }
+    else = { log = "EU4AP bbea7eaca3803472b3732276 CLAIM_UNKNOWN [Root.eu4ap_code.GetValue]" }
+    eu4ap_recompute = yes
+    eu4ap_promote = yes
+}
+eu4ap_replay_claims = {
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1018 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 1018" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1230 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 1230" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_1663 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 1663" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2020 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2020" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2031 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2031" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2208 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2208" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2318 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2318" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2494 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2494" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2501 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2501" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2528 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2528" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2553 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2553" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2618 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2618" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2649 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2649" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_2786 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 2786" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3044 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3044" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3281 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3281" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3289 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3289" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3334 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3334" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_3407 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 3407" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4012 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4012" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4102 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4102" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4130 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4130" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4329 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4329" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4350 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4350" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4578 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4578" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4632 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4632" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4909 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4909" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4966 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4966" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_4996 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 4996" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5104 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5104" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5242 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5242" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5267 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5267" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5617 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5617" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5712 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5712" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5756 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5756" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5769 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5769" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5938 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5938" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_5969 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 5969" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6081 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6081" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6180 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6180" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6194 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6194" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6243 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6243" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6328 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6328" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6409 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6409" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6451 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6451" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6458 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6458" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6796 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6796" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_6866 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 6866" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7306 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7306" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7311 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7311" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7534 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7534" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7634 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7634" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_7890 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 7890" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8113 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8113" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8253 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8253" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8290 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8290" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8339 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8339" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8735 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8735" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8808 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8808" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8815 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8815" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_8961 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 8961" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9016 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9016" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9086 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9086" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9268 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9268" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9322 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9322" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9376 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9376" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9541 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9541" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9725 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9725" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9852 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9852" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9896 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9896" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9965 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9965" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9969 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9969" }
+    if = { limit = { has_country_flag = eu4ap_bbea7eaca3803472b3732276_dlv_9989 } log = "EU4AP bbea7eaca3803472b3732276 CLAIM 9989" }
+}

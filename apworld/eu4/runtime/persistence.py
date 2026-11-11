@@ -83,5 +83,17 @@ class State:
         with self.db:
             self.db.execute("UPDATE items SET status='pending' WHERE status='received'")
 
+    def mark_staged(self, indices: set[int]) -> None:
+        """Item is in the inbox installed while EU4 was closed (schema 2)."""
+        with self.db:
+            self.db.executemany("UPDATE items SET status='staged' WHERE idx=? AND status IN ('received','pending')",
+                                [(i,) for i in indices])
+
+    def mark_applied(self, indices: set[int]) -> None:
+        """EU4 logged the item as applied (schema 2); a save may later confirm it."""
+        with self.db:
+            self.db.executemany("UPDATE items SET status='applied' WHERE idx=? AND status!='confirmed'",
+                                [(i,) for i in indices])
+
     def close(self) -> None:
         self.db.close()
